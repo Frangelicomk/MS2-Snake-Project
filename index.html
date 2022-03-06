@@ -1,15 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>The Underworld</title>
+    <script src="https://kit.fontawesome.com/28d7ca0192.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="assets/css/styles.css" type="text/css"></link>
-    
+
 </head>
+
 <body>
-    <canvas id='underworld-bg' height="700" width="700"></canvas>
+    <header>
+        <h1 class="game-name">Hades Snake Game</h1>
+    </header>
+    <div id="hades-welcome" class="container">
+
+    </div>
+    <div id="contact-hidden-form">
+        <button id="contact-form-activate">Contact Me</button>
+    </div>
+    <div>
+        <canvas id='underworld-bg' height="700" width="700"></canvas>
+    </div>
+    <div id="scores">
+        <h2>Score: <span class="current-score">00</span></h2>
+        <h2>Highest Score: <span class="highest-score">00</span></h2>
+    </div>
+    <div id="controls-for-user" class="on-screen-buttons">
+        <button class="arrow-keys">UP</button>
+        <button class="arrow-keys">RIGHT</button>
+        <button class="arrow-keys">DOWN</button>
+        <button class="arrow-keys">LEFT</button>
+    </div>
+    <div class="socials">
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-dribbble"></i></a>
+        <a href="#"><i class="fa-brands fa-github"></i></a>
+        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+    </div>
     <script src="assets/js/snakegame.js"></script>
 </body>
+
 </html>
