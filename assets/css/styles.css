@@ -6,6 +6,7 @@ font-family: 'Cinzel', serif; */
 body {
 
     background-image: url('assets/images/underworld.jpg');
+    background: darkslategray;
     background-position: center;
     background-repeat: no-repeat;
 
@@ -31,17 +32,6 @@ header {
     text-decoration: none;
 }
 
-.game-name:hover {
-    color: bisque;
-    transform: scale(1.5);
-    background-color: none;
-    background-size: 10%;
-    border-bottom: 3px solid bisque;
-    padding-bottom: .3em;
-    text-decoration: none;
-
-
-}
 
 .underworld-main-screen {
     display: flex;
