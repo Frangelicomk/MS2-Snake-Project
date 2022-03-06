@@ -43,29 +43,7 @@ header {
 
 }
 
-#left-side-screen-hades {
+.underworld-main-screen {
     display: flex;
-    align-items: center;
-    width: 25%;
-    float: left;
-    justify-content: center;
-    flex-direction: row;
-}
-
-#right-side-screen-hades {
-    display: flex;
-    justify-content: space-around;
-    align-content: center;
-    align-items: center;
-    flex-direction: row;
-    width: 25%;
-    float: right;
-}
-
-canvas {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    width: 40%;
-    float: left;
+    justify-content: space-between;
 }
