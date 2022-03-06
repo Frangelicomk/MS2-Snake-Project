@@ -1,17 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Cinzel&display=swap');
 
 /* font-family: 'Amatic SC', cursive;
-font-family: 'Cinzel', serif; */ 
+font-family: 'Cinzel', serif; */
 
 body {
-    background: #68c0d9;
+
+    background-image: url('assets/images/underworld.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+
 }
 
 header {
     align-items: center;
     display: flex;
     justify-content: center;
+
 }
+
 
 .game-name {
     font-family: 'Amatic SC', cursive, sans-serif;
@@ -20,7 +26,7 @@ header {
     text-align: center;
     transition: color 0.8s;
     transition: transform 0.8s;
-    border-bottom: 3px solid #68c0d9;
+    border-bottom: 3px solid bisque;
     padding-bottom: .25em;
     text-decoration: none;
 }
@@ -28,18 +34,39 @@ header {
 .game-name:hover {
     color: bisque;
     transform: scale(1.5);
-    background-color: #68c0d9;
+    background-color: none;
     background-size: 10%;
-    border-bottom: 0;
+    border-bottom: 3px solid bisque;
     padding-bottom: .3em;
     text-decoration: none;
 
 
 }
 
-canvas {
-    align-items: center;
+#left-side-screen-hades {
     display: flex;
+    align-items: center;
+    width: 33%;
+    float: left;
     justify-content: center;
-    
+    flex-direction: row;
+}
+
+#right-side-screen-hades {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 33%;
+    float: right;
+}
+
+canvas {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    width: 33%;
+    flex-wrap: wrap;
 }
