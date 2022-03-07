@@ -19,6 +19,32 @@ header {
 
 }
 
+a {
+    text-decoration: none;
+}
+
+#underworld-bg {
+    display: flex;
+    height: 500px;
+    width: 500px;
+}
+.underworld-main-screen {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.hadesone {
+    display: flex;
+    z-index: 10;
+    max-width: 50%;
+}
+
+.hadestwo {
+    display: flex;
+    z-index: 120;
+    max-width: 50%;
+}
 
 .game-name {
     font-family: 'Amatic SC', cursive, sans-serif;
@@ -32,8 +58,16 @@ header {
     text-decoration: none;
 }
 
-
-.underworld-main-screen {
-    display: flex;
-    justify-content: space-between;
+.socials a {
+    font-size: 2rem;
 }
+
+.socials a:hover {
+    color: bisque;
+}
+
+.arrow-keys {
+    font-size: 30px;
+}
+
+
