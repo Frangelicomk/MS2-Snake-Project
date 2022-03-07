@@ -30,8 +30,21 @@ function drawSnake(){
     }
     ctx.fillStyle = '#fbfaf1'
     ctx.fillRect(snakePosition.x*tileSize, snakePosition.y*tileSize, tileSize, tileSize)
-    
-    
+}
+
+document.addEventListener('keydown', keyEventPress);
+
+function keyEventPress(e){
+    if(e.keyCode === 37){
+        snakeSpeed = {x:-1, y:0}
+    } else if(e.keyCode === 38){
+        snakeSpeed = {x:0, y:-1}
+    } else if(e.keyCode === 39){
+        snakeSpeed = {x:1, y:0}
+    } else if(e.keyCode === 40){
+        snakeSpeed = {x:0, y:1}
+    }
+    console.log(e.keyCode);
 }
 
 function underworldSnakeGame(){
