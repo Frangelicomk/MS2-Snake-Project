@@ -36,13 +36,24 @@ document.addEventListener('keydown', keyEventPress);
 
 function keyEventPress(e){
     if(e.keyCode === 37){
-        snakeSpeed = {x:-1, y:0}
+        if(snakeSpeed.x !== 1){
+            snakeSpeed = {x:-1, y:0}
+        } else console.log("Error, you can not go  left while going right")
+        
     } else if(e.keyCode === 38){
-        snakeSpeed = {x:0, y:-1}
+        if(snakeSpeed.y !== 1){
+            snakeSpeed = {x:0, y:-1}
+        } else console.log("Error, you can not go up while going down")
+        
     } else if(e.keyCode === 39){
-        snakeSpeed = {x:1, y:0}
+        
+        if(snakeSpeed.x !== -1){
+            snakeSpeed = {x:1, y:0}
+        } else console.log("Error, you can not go right while going left")
     } else if(e.keyCode === 40){
-        snakeSpeed = {x:0, y:1}
+        if(snakeSpeed.y !== -1){
+            snakeSpeed = {x:0, y:1}
+        } else console.log("Error, you can not go down while going up")
     }
     console.log(e.keyCode);
 }
