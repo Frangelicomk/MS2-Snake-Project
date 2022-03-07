@@ -2,9 +2,13 @@
 
 /* font-family: 'Amatic SC', cursive;
 font-family: 'Cinzel', serif; */
+html {
+    font-family: 'Amatic SC', cursive, sans-serif;
+}
+
 
 body {
-
+    
     background-image: url('assets/images/underworld.jpg');
     background: darkslategray;
     background-position: center;
@@ -12,50 +16,25 @@ body {
 
 }
 
-header {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-
-}
 
 a {
     text-decoration: none;
     color: bisque;
 }
 
-#underworld-bg {
+.main-game-area {
+    margin: 0px;
+    padding: 0px;
     display: flex;
-    height: 500px;
-    width: 500px;
-}
-.underworld-main-screen {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.hadesone {
-    display: flex;
-    z-index: 10;
-    max-width: 50%;
-}
-
-.hadestwo {
-    display: flex;
-    z-index: 120;
-    max-width: 50%;
+    justify-content: center;
+    align-items: center;
 }
 
 .game-name {
-    font-family: 'Amatic SC', cursive, sans-serif;
+    
     font-size: 50px;
     color: bisque;
     text-align: center;
-    transition: color 0.8s;
-    transition: transform 0.8s;
-    border-bottom: 3px solid bisque;
-    padding-bottom: .25em;
     text-decoration: none;
 }
 
@@ -68,7 +47,7 @@ a {
 }
 
 .arrow-keys {
-    font-size: 30px;
+    font-size: 10px;
 }
 
 
