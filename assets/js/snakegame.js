@@ -8,6 +8,7 @@ let snakeTailLength = 4; // initial length of the snake
 let snakeTail = []; // snake positions
 let snakeSpeed = {x:0,y:0};
 let snakeFoodPosition = {x:3, y:5};
+let removeTail = true;
 
 let snakeHead = snakeTail[snakeTail.length-1];
 
@@ -35,25 +36,24 @@ function drawFood(){
 // this function draws the snake
 function drawSnake(){
 
-    let snakeHead = snakeTail[snakeTail.length-1];
-
     // update position of the snake head
-
     let newHeadSnake = {x: snakeTail[snakeTail.length-1].x + snakeSpeed.x, y: snakeTail[snakeTail.length-1].y + snakeSpeed.y};
 
     snakeTail.push(newHeadSnake);
-    snakeTail.shift();
-
-    if(snakeHead.x === tileNumber){
-        snakeHead.x = 0;
-    } else if (snakeHead.x === -1){
-        snakeHead.x = tileNumber;
+    if(removeTail){  //checks if the tail should be removed
+        snakeTail.shift(); // remove last tail block
     }
 
-    if(snakeHead.y === tileNumber){
-        snakeHead.y = 0;
-    } else if (snakeHead.y === -1){
-        snakeHead.y = tileNumber;
+    if(newHeadSnake.x === tileNumber){
+        newHeadSnake.x = 0;
+    } else if (newHeadSnake.x === -1){
+        newHeadSnake.x = tileNumber;
+    }
+
+    if(newHeadSnake.y === tileNumber){
+        newHeadSnake.y = 0;
+    } else if (newHeadSnake.y === -1){
+        newHeadSnake.y = tileNumber;
     }
     
     ctx.fillStyle = '#fbfaf1';
@@ -91,15 +91,18 @@ function keyEventPress(e){
 }
 
 // This function will make the snake eat the food
-function checkCollision()
-{
-    let snakeHead = snakeTail[snakeTail.length-1];
-    if(snakeFoodPosition.x === snakeHead.x && snakeFoodPosition.y === snakeHead.y){
+function checkCollision(){
+    let newHeadSnake = {x: snakeTail[snakeTail.length-1].x + snakeSpeed.x, y: snakeTail[snakeTail.length-1].y + snakeSpeed.y};
+    
+    if(snakeFoodPosition.x === newHeadSnake.x && snakeFoodPosition.y === newHeadSnake.y){
         snakeFoodPosition = {x:Math.floor(Math.random()*tileNumber), y:Math.floor(Math.random()*tileNumber)}
-    }
+        removeTail = false; // don't remove tail to increase the snake by one block
+    } 
+    
 }
 
 function underworldSnakeGame(){
+    removeTail = true;
     clearScreen();
     checkCollision();
     drawSnake();
