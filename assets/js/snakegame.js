@@ -4,9 +4,19 @@ const tileNumber = 34;
 const tileSize = canvas.width/tileNumber;
 let gameSpeed = 10; // this is the speed the game goes.
 let snakePosition = {x:Math.floor(tileNumber/2), y:Math.floor(tileNumber/2)};
+let snakeTailLength = 4; // initial length of the snake
+let snakeTail = []; // snake positions
 let snakeSpeed = {x:0,y:0};
 let snakeFoodPosition = {x:3, y:5};
 
+let snakeHead = snakeTail[snakeTail.length-1];
+
+for(let i = 0; i < snakeTailLength; i++){
+    let position = {x:Math.floor(tileNumber/2), y:Math.floor(tileNumber/2) - i};
+    snakeTail.unshift(position);
+}
+
+console.log(snakeTail)
 
 /**
  * Setting up the canvas
@@ -14,7 +24,6 @@ let snakeFoodPosition = {x:3, y:5};
 function clearScreen(){ //clears the screen
     ctx.fillStyle = '#09243a'
     ctx.fillRect(0,0,canvas.width,canvas.height)
-
 }
 
 // this function draws the food
@@ -25,20 +34,33 @@ function drawFood(){
 
 // this function draws the snake
 function drawSnake(){
-    snakePosition = {x:snakePosition.x + snakeSpeed.x, y:snakePosition.y + snakeSpeed.y}
-    if(snakePosition.x === tileNumber){
-        snakePosition.x = 0;
-    } else if (snakePosition.x === -1){
-        snakePosition.x = tileNumber;
+
+    let snakeHead = snakeTail[snakeTail.length-1];
+
+    // update position of the snake head
+
+    let newHeadSnake = {x: snakeTail[snakeTail.length-1].x + snakeSpeed.x, y: snakeTail[snakeTail.length-1].y + snakeSpeed.y};
+
+    snakeTail.push(newHeadSnake);
+    snakeTail.shift();
+
+    if(snakeHead.x === tileNumber){
+        snakeHead.x = 0;
+    } else if (snakeHead.x === -1){
+        snakeHead.x = tileNumber;
     }
 
-    if(snakePosition.y === tileNumber){
-        snakePosition.y = 0;
-    } else if (snakePosition.y === -1){
-        snakePosition.y = tileNumber;
+    if(snakeHead.y === tileNumber){
+        snakeHead.y = 0;
+    } else if (snakeHead.y === -1){
+        snakeHead.y = tileNumber;
     }
-    ctx.fillStyle = '#fbfaf1'
-    ctx.fillRect(snakePosition.x*tileSize, snakePosition.y*tileSize, tileSize, tileSize)
+    
+    ctx.fillStyle = '#fbfaf1';
+    
+    for(let i = 0; i < snakeTail.length; i++){
+        ctx.fillRect(snakeTail[(snakeTail.length-i)-1].x*tileSize, snakeTail[(snakeTail.length-i)-1].y*tileSize, tileSize, tileSize);
+    }
 }
 
 document.addEventListener('keydown', keyEventPress);
@@ -69,8 +91,10 @@ function keyEventPress(e){
 }
 
 // This function will make the snake eat the food
-function checkCollision(){
-    if(snakeFoodPosition.x === snakePosition.x && snakeFoodPosition.y === snakePosition.y){
+function checkCollision()
+{
+    let snakeHead = snakeTail[snakeTail.length-1];
+    if(snakeFoodPosition.x === snakeHead.x && snakeFoodPosition.y === snakeHead.y){
         snakeFoodPosition = {x:Math.floor(Math.random()*tileNumber), y:Math.floor(Math.random()*tileNumber)}
     }
 }
