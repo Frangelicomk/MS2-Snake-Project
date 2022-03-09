@@ -1,8 +1,8 @@
-let canvas = document.getElementById('underworld-bg');
-let ctx = canvas.getContext('2d');
+const canvas = document.getElementById('underworld-bg');
+const ctx = canvas.getContext('2d');
 const tileNumber = 24;
 const tileSize = canvas.width/tileNumber;
-let gameSpeed = 10; // this is the speed the game goes.
+let gameSpeed = 5; // this is the speed the game goes.
 let snakeTailLength = 1; // initial length of the snake
 let snakeTail; // snake positions
 let snakeSpeed;
@@ -122,20 +122,18 @@ function resetGame(){
     gameStart = true; // game is paused
     snakeTail = []; // reset snake
     snakeSpeed = {x:-1,y:0}; // initialize snake speed
-    // snakeFoodPosition = {x:Math.floor(Math.random()*tileNumber), y:Math.floor(Math.random()*tileNumber)};
+   
     
     for(let i = 0; i < snakeTailLength; i++){
         let position = {x:Math.floor(tileNumber/2), y:Math.floor(tileNumber/2)};
         snakeTail.unshift(position);
     }
-
-
-
     spawnFood(snakeTail[snakeTail.length - 1]);
 
     document.getElementById("game-status").innerHTML = "";
 }
 
+// creates the food position
 function spawnFood(newHeadSnake){
 
     let foodIsInSnake = true;
