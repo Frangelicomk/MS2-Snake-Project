@@ -2,7 +2,7 @@ const canvas = document.getElementById('underworld-bg');
 const ctx = canvas.getContext('2d');
 const tileNumber = 24;
 const tileSize = canvas.width/tileNumber;
-let gameSpeed = 5; // this is the speed the game goes.
+let gameSpeed; // this is the speed the game goes.
 let snakeTailLength = 1; // initial length of the snake
 let snakeTail; // snake positions
 let snakeSpeed;
@@ -125,6 +125,7 @@ function resetGame(){
     clearScreen();
     gameStart = true; // game is paused
     snakeTail = []; // reset snake
+    gameSpeed = 5;
     snakeSpeed = {x:-1,y:0}; // initialize snake speed
     score = 0;
     
@@ -166,6 +167,9 @@ function scoreCounter(){
         score = '0' + score;
     }
 
+    if(score % 10 == 0){
+        gameSpeed++;
+    }
     document.getElementsByClassName('current-score')[0].innerHTML = score;
 }
 
@@ -186,7 +190,7 @@ function underworldSnakeGame(){
     }
     else {
         highScoreCounter();
-        document.getElementById("game-status").innerHTML = "Game Over: Press any key to start!"
+        document.getElementById("game-status").innerHTML = "Game Over: Press SPACE to re-start!"
     }
         
     
