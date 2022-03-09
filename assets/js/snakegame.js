@@ -21,8 +21,6 @@ function clearScreen(){ //clears the screen
 
 // this function draws the food
 function drawFood(){
-
-    
     ctx.fillStyle = '#ca786f';
     ctx.fillRect(snakeFoodPosition.x*tileSize, snakeFoodPosition.y*tileSize, tileSize, tileSize)
 }
@@ -82,7 +80,7 @@ function keyEventPress(e){
         } else console.log("Error, you can not go down while going up")
     }
 
-    if(e.keyCode === 37 || e.keyCode === 38 || e.keyCode === 39 || e.keyCode === 40){
+    if(e.keyCode === 32){
         if(!gameIsLost){
             gameStart = true;
         }
@@ -102,6 +100,8 @@ function checkCollision(){
     // if snake ate the food, create a new position for the food
     if(snakeFoodPosition.x === newHeadSnake.x && snakeFoodPosition.y === newHeadSnake.y){
         snakeFoodPosition = {x:Math.floor(Math.random()*tileNumber), y:Math.floor(Math.random()*tileNumber)}
+        
+
         removeTail = false; // don't remove tail to increase the snake by one block
     }
     // if snake hit itself, GAME OVER
@@ -122,7 +122,7 @@ function resetGame(){
     clearScreen();
     gameStart = true; // game is paused
     snakeTail = []; // reset snake
-    snakeSpeed = {x:-1,y:0};
+    snakeSpeed = {x:-1,y:0}; // initialize snake speed
     snakeFoodPosition = {x:Math.floor(Math.random()*tileNumber), y:Math.floor(Math.random()*tileNumber)};
     
     for(let i = 0; i < snakeTailLength; i++){
@@ -132,6 +132,7 @@ function resetGame(){
 
     document.getElementById("game-status").innerHTML = "";
 }
+
 
 
 function underworldSnakeGame(){
