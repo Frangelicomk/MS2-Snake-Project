@@ -10,6 +10,8 @@ let snakeFoodPosition;
 let removeTail = true;
 let gameStart;
 let gameIsLost = false;
+let score; // score counter
+let highScore = 0; // highscore record
 
 /**
  * Setting up the canvas
@@ -101,6 +103,8 @@ function checkCollision(){
     if(snakeFoodPosition.x === newHeadSnake.x && snakeFoodPosition.y === newHeadSnake.y){
         
         spawnFood(newHeadSnake);
+        
+        scoreCounter();
 
         removeTail = false; // don't remove tail to increase the snake by one block
     }
@@ -122,7 +126,7 @@ function resetGame(){
     gameStart = true; // game is paused
     snakeTail = []; // reset snake
     snakeSpeed = {x:-1,y:0}; // initialize snake speed
-   
+    score = 0;
     
     for(let i = 0; i < snakeTailLength; i++){
         let position = {x:Math.floor(tileNumber/2), y:Math.floor(tileNumber/2)};
@@ -131,6 +135,7 @@ function resetGame(){
     spawnFood(snakeTail[snakeTail.length - 1]);
 
     document.getElementById("game-status").innerHTML = "";
+    document.getElementsByClassName('current-score')[0].innerHTML = '00';
 }
 
 // creates the food position
@@ -153,6 +158,24 @@ function spawnFood(newHeadSnake){
     }
 }
 
+function scoreCounter(){
+    score = parseInt(document.getElementsByClassName('current-score')[0].innerHTML);
+    score = score + 5;
+
+    if(score < 10){
+        score = '0' + score;
+    }
+
+    document.getElementsByClassName('current-score')[0].innerHTML = score;
+}
+
+function highScoreCounter(){
+    if(gameIsLost && highScore < score){
+        highScore = score;
+    }
+    document.getElementsByClassName('highest-score')[0].innerHTML = highScore;
+}
+
 function underworldSnakeGame(){
     if(!gameIsLost){
         removeTail = true;
@@ -162,6 +185,7 @@ function underworldSnakeGame(){
         drawFood();
     }
     else {
+        highScoreCounter();
         document.getElementById("game-status").innerHTML = "Game Over: Press any key to start!"
     }
         
