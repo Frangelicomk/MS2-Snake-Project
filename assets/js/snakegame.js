@@ -87,9 +87,9 @@ document.addEventListener('keydown', keyEventPress);
 
 // This function controls the movement of the snake
 function keyEventPress(e){
-    if(e.keyCode === 37){
+    if(e.keyCode === 37 ){
         if(snakeSpeed.x !== 1){
-            snakeSpeed = {x:-1, y:0}
+        snakeSpeed = {x:-1, y:0}
         } else console.log("Error, you can not go  left while going right")
         
     } else if(e.keyCode === 38){
@@ -155,7 +155,7 @@ function resetGame(){
     clearScreen();
     gameStart = false ; // game is paused
     snakeTail = []; // reset snake
-    gameSpeed = 5;
+    gameSpeed = 7;
     snakeSpeed = {x:0,y:0}; // initialize snake speed
     score = 0;
     
@@ -197,9 +197,17 @@ function scoreCounter(){
         score = '0' + score;
     }
 
-    if(score % 10 == 0){
-        gameSpeed++;
+    if(score % 30 == 0){
+        if(score < 150){
+            gameSpeed++;
+        }
+        else{
+            gameSpeed = gameSpeed + 2;
+        }
     }
+
+    console.log(gameSpeed)
+
     document.getElementsByClassName('current-score')[0].innerHTML = score;
 }
 
