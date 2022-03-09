@@ -3,7 +3,7 @@ let ctx = canvas.getContext('2d');
 const tileNumber = 24;
 const tileSize = canvas.width/tileNumber;
 let gameSpeed = 10; // this is the speed the game goes.
-let snakeTailLength = 5; // initial length of the snake
+let snakeTailLength = 1; // initial length of the snake
 let snakeTail; // snake positions
 let snakeSpeed;
 let snakeFoodPosition;
@@ -99,8 +99,22 @@ function checkCollision(){
     
     // if snake ate the food, create a new position for the food
     if(snakeFoodPosition.x === newHeadSnake.x && snakeFoodPosition.y === newHeadSnake.y){
-        snakeFoodPosition = {x:Math.floor(Math.random()*tileNumber), y:Math.floor(Math.random()*tileNumber)}
         
+        let foodIsInSnake = true;
+        while(foodIsInSnake)
+        {
+            foodIsInSnake = false;
+            snakeFoodPosition = {x:Math.floor(Math.random()*tileNumber), y:Math.floor(Math.random()*tileNumber)};
+
+            for(let t = 0; t < snakeTail.length; t++){
+                let tile = snakeTail[t];
+                // if food is in a tile which the snake occupies
+                if(tile.x == snakeFoodPosition.x && tile.y == snakeFoodPosition.y){
+                    foodIsInSnake = true;
+                    break;
+                }
+            }
+        }
 
         removeTail = false; // don't remove tail to increase the snake by one block
     }
@@ -114,6 +128,7 @@ function checkCollision(){
             }
         }
     }
+    
 }
 
 
@@ -153,3 +168,4 @@ function underworldSnakeGame(){
 
 resetGame();
 underworldSnakeGame();
+
