@@ -42,7 +42,7 @@ function clearScreen(){ //clears the screen
 function drawFood(){
     ctx.fillStyle = 'blue';
     ctx.shadowBlur = 20;
-    ctx.shadowColor = "rgba(0,0,255,1 )";
+    ctx.shadowColor = "rgba(0,0,255,1 )"; // I got the design idea from https://codepen.io/fariati
     ctx.fillRect(snakeFoodPosition.x*tileSize, snakeFoodPosition.y*tileSize, tileSize, tileSize)
 }
 
@@ -77,7 +77,7 @@ function drawSnake(){
     ctx.shadowBlur = 0;
 
     for(let i = 0; i < snakeTail.length; i++){
-        ctx.lineWidth = 2;
+        ctx.lineWidth = 2; // I got the design idea from https://codepen.io/fariati
         ctx.fillStyle = "rgba(255,255,255,.85 )";
         ctx.fillRect(snakeTail[(snakeTail.length-i)-1].x*tileSize, snakeTail[(snakeTail.length-i)-1].y*tileSize, tileSize, tileSize);
     }
