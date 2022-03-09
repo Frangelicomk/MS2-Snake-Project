@@ -3,22 +3,13 @@ let ctx = canvas.getContext('2d');
 const tileNumber = 24;
 const tileSize = canvas.width/tileNumber;
 let gameSpeed = 10; // this is the speed the game goes.
-// let snakePosition = {x:Math.floor(tileNumber/2), y:Math.floor(tileNumber/2)};
 let snakeTailLength = 5; // initial length of the snake
-let snakeTail = []; // snake positions
-let snakeSpeed = {x:0,y:0};
-let snakeFoodPosition = {x:3, y:5};
+let snakeTail; // snake positions
+let snakeSpeed;
+let snakeFoodPosition;
 let removeTail = true;
-let gameStart = false;
-
-let snakeHead = snakeTail[snakeTail.length-1];
-
-for(let i = 0; i < snakeTailLength; i++){
-    let position = {x:Math.floor(tileNumber/2), y:Math.floor(tileNumber/2) - i};
-    snakeTail.unshift(position);
-}
-
-console.log(snakeTail)
+let gameStart;
+let gameIsLost = false;
 
 /**
  * Setting up the canvas
@@ -30,6 +21,8 @@ function clearScreen(){ //clears the screen
 
 // this function draws the food
 function drawFood(){
+
+    
     ctx.fillStyle = '#ca786f';
     ctx.fillRect(snakeFoodPosition.x*tileSize, snakeFoodPosition.y*tileSize, tileSize, tileSize)
 }
@@ -90,46 +83,72 @@ function keyEventPress(e){
     }
 
     if(e.keyCode === 37 || e.keyCode === 38 || e.keyCode === 39 || e.keyCode === 40){
-        gameStart = true;
+        if(!gameIsLost){
+            gameStart = true;
+        }
+        else{
+            gameIsLost = false;
+            resetGame();
+        }
     }
 
 }
 
 
-// This function will make the snake eat the food
+// This function will make the snake eat the food and also check if GAME OVER due to collision with tail
 function checkCollision(){
     let newHeadSnake = {x: snakeTail[snakeTail.length-1].x + snakeSpeed.x, y: snakeTail[snakeTail.length-1].y + snakeSpeed.y};
     
+    // if snake ate the food, create a new position for the food
     if(snakeFoodPosition.x === newHeadSnake.x && snakeFoodPosition.y === newHeadSnake.y){
         snakeFoodPosition = {x:Math.floor(Math.random()*tileNumber), y:Math.floor(Math.random()*tileNumber)}
         removeTail = false; // don't remove tail to increase the snake by one block
     }
-}
-
-//Game Over
-function checkIfLost(){
-
-    let newHeadSnake = {x: snakeTail[snakeTail.length-1].x + snakeSpeed.x, y: snakeTail[snakeTail.length-1].y + snakeSpeed.y};
-
-    if(snakeTail.length >= snakeTailLength && gameStart){
+    // if snake hit itself, GAME OVER
+    else if(snakeTail.length >= snakeTailLength && gameStart){
         for(let t = 0; t < snakeTail.length; t++){
             let tail = snakeTail[t];
             if(tail.x == newHeadSnake.x && tail.y == newHeadSnake.y){
-                console.log("you lost")
+                gameIsLost = true;
+                break;
             }
         }
     }
 }
 
-function underworldSnakeGame(){
-    removeTail = true;
-    clearScreen();
-    checkCollision();
-    checkIfLost();
-    drawSnake();
-    drawFood();
-    setTimeout(underworldSnakeGame, 1000/gameSpeed)
 
+
+function resetGame(){
+    clearScreen();
+    gameStart = true; // game is paused
+    snakeTail = []; // reset snake
+    snakeSpeed = {x:-1,y:0};
+    snakeFoodPosition = {x:Math.floor(Math.random()*tileNumber), y:Math.floor(Math.random()*tileNumber)};
+    
+    for(let i = 0; i < snakeTailLength; i++){
+        let position = {x:Math.floor(tileNumber/2), y:Math.floor(tileNumber/2)};
+        snakeTail.unshift(position);
+    }
+
+    document.getElementById("game-status").innerHTML = "";
 }
 
+
+function underworldSnakeGame(){
+    if(!gameIsLost){
+        removeTail = true;
+        clearScreen();
+        checkCollision();
+        drawSnake();
+        drawFood();
+    }
+    else {
+        document.getElementById("game-status").innerHTML = "Game Over: Press any key to start!"
+    }
+        
+    
+    setTimeout(underworldSnakeGame, 1000/gameSpeed)
+}
+
+resetGame();
 underworldSnakeGame();
