@@ -100,21 +100,7 @@ function checkCollision(){
     // if snake ate the food, create a new position for the food
     if(snakeFoodPosition.x === newHeadSnake.x && snakeFoodPosition.y === newHeadSnake.y){
         
-        let foodIsInSnake = true;
-        while(foodIsInSnake)
-        {
-            foodIsInSnake = false;
-            snakeFoodPosition = {x:Math.floor(Math.random()*tileNumber), y:Math.floor(Math.random()*tileNumber)};
-
-            for(let t = 0; t < snakeTail.length; t++){
-                let tile = snakeTail[t];
-                // if food is in a tile which the snake occupies
-                if(tile.x == snakeFoodPosition.x && tile.y == snakeFoodPosition.y){
-                    foodIsInSnake = true;
-                    break;
-                }
-            }
-        }
+        spawnFood(newHeadSnake);
 
         removeTail = false; // don't remove tail to increase the snake by one block
     }
@@ -131,24 +117,43 @@ function checkCollision(){
     
 }
 
-
-
 function resetGame(){
     clearScreen();
     gameStart = true; // game is paused
     snakeTail = []; // reset snake
     snakeSpeed = {x:-1,y:0}; // initialize snake speed
-    snakeFoodPosition = {x:Math.floor(Math.random()*tileNumber), y:Math.floor(Math.random()*tileNumber)};
+    // snakeFoodPosition = {x:Math.floor(Math.random()*tileNumber), y:Math.floor(Math.random()*tileNumber)};
     
     for(let i = 0; i < snakeTailLength; i++){
         let position = {x:Math.floor(tileNumber/2), y:Math.floor(tileNumber/2)};
         snakeTail.unshift(position);
     }
 
+
+
+    spawnFood(snakeTail[snakeTail.length - 1]);
+
     document.getElementById("game-status").innerHTML = "";
 }
 
+function spawnFood(newHeadSnake){
 
+    let foodIsInSnake = true;
+    while(foodIsInSnake)
+    {
+        foodIsInSnake = false;
+        snakeFoodPosition = {x:Math.floor(Math.random()*tileNumber), y:Math.floor(Math.random()*tileNumber)};
+
+        for(let t = 0; t < snakeTail.length; t++){
+            let tile = snakeTail[t];
+            // if food is in a tile which the snake occupies
+            if(tile.x == snakeFoodPosition.x && tile.y == snakeFoodPosition.y){
+                foodIsInSnake = true;
+                break;
+            }
+        }
+    }
+}
 
 function underworldSnakeGame(){
     if(!gameIsLost){
