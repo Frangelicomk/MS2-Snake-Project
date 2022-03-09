@@ -108,6 +108,10 @@ function keyEventPress(e){
         } else console.log("Error, you can not go down while going up")
     }
 
+    if(e.keyCode === 37 || e.keyCode === 38 || e.keyCode === 39 || e.keyCode === 40){
+        gameStart = true;
+    }
+
     if(e.keyCode === 32){
         if(!gameIsLost){
             gameStart = true;
@@ -149,10 +153,10 @@ function checkCollision(){
 
 function resetGame(){
     clearScreen();
-    gameStart = true; // game is paused
+    gameStart = false ; // game is paused
     snakeTail = []; // reset snake
     gameSpeed = 5;
-    snakeSpeed = {x:-1,y:0}; // initialize snake speed
+    snakeSpeed = {x:0,y:0}; // initialize snake speed
     score = 0;
     
     for(let i = 0; i < snakeTailLength; i++){
