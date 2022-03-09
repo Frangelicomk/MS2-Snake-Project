@@ -1,14 +1,15 @@
 let canvas = document.getElementById('underworld-bg');
 let ctx = canvas.getContext('2d');
-const tileNumber = 34;
+const tileNumber = 24;
 const tileSize = canvas.width/tileNumber;
 let gameSpeed = 10; // this is the speed the game goes.
-let snakePosition = {x:Math.floor(tileNumber/2), y:Math.floor(tileNumber/2)};
-let snakeTailLength = 4; // initial length of the snake
+// let snakePosition = {x:Math.floor(tileNumber/2), y:Math.floor(tileNumber/2)};
+let snakeTailLength = 5; // initial length of the snake
 let snakeTail = []; // snake positions
 let snakeSpeed = {x:0,y:0};
 let snakeFoodPosition = {x:3, y:5};
 let removeTail = true;
+let gameStart = false;
 
 let snakeHead = snakeTail[snakeTail.length-1];
 
@@ -88,7 +89,12 @@ function keyEventPress(e){
         } else console.log("Error, you can not go down while going up")
     }
 
+    if(e.keyCode === 37 || e.keyCode === 38 || e.keyCode === 39 || e.keyCode === 40){
+        gameStart = true;
+    }
+
 }
+
 
 // This function will make the snake eat the food
 function checkCollision(){
@@ -97,14 +103,29 @@ function checkCollision(){
     if(snakeFoodPosition.x === newHeadSnake.x && snakeFoodPosition.y === newHeadSnake.y){
         snakeFoodPosition = {x:Math.floor(Math.random()*tileNumber), y:Math.floor(Math.random()*tileNumber)}
         removeTail = false; // don't remove tail to increase the snake by one block
-    } 
-    
+    }
+}
+
+//Game Over
+function checkIfLost(){
+
+    let newHeadSnake = {x: snakeTail[snakeTail.length-1].x + snakeSpeed.x, y: snakeTail[snakeTail.length-1].y + snakeSpeed.y};
+
+    if(snakeTail.length >= snakeTailLength && gameStart){
+        for(let t = 0; t < snakeTail.length; t++){
+            let tail = snakeTail[t];
+            if(tail.x == newHeadSnake.x && tail.y == newHeadSnake.y){
+                console.log("you lost")
+            }
+        }
+    }
 }
 
 function underworldSnakeGame(){
     removeTail = true;
     clearScreen();
     checkCollision();
+    checkIfLost();
     drawSnake();
     drawFood();
     setTimeout(underworldSnakeGame, 1000/gameSpeed)
