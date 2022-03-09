@@ -1,6 +1,6 @@
 const canvas = document.getElementById('underworld-bg');
-const ctx = canvas.getContext('2d');
-const tileNumber = 24;
+let ctx = canvas.getContext('2d');
+const tileNumber = 20;
 const tileSize = canvas.width/tileNumber;
 let gameSpeed; // this is the speed the game goes.
 let snakeTailLength = 1; // initial length of the snake
@@ -17,13 +17,32 @@ let highScore = 0; // highscore record
  * Setting up the canvas
  */
 function clearScreen(){ //clears the screen
-    ctx.fillStyle = '#09243a'
-    ctx.fillRect(0,0,canvas.width,canvas.height)
+    ctx.fillStyle = '#181825'
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+// I got the design idea from https://codepen.io/fariati
+    ctx.lineWidth = 1.1;
+    ctx.strokeStyle = "#232332";
+    ctx.shadowBlur = 0;
+    for (let i = 1; i < tileNumber; i++) {
+        let f = (canvas.width / tileNumber) * i;
+        ctx.beginPath();
+        ctx.moveTo(f, 0);
+        ctx.lineTo(f, canvas.height);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(0, f);
+        ctx.lineTo(canvas.width, f);
+        ctx.stroke();
+        ctx.closePath();
+    }
 }
 
 // this function draws the food
 function drawFood(){
-    ctx.fillStyle = '#ca786f';
+    ctx.fillStyle = 'blue';
+    ctx.shadowBlur = 20;
+    ctx.shadowColor = "rgba(0,0,255,1 )";
     ctx.fillRect(snakeFoodPosition.x*tileSize, snakeFoodPosition.y*tileSize, tileSize, tileSize)
 }
 
@@ -50,9 +69,16 @@ function drawSnake(){
         newHeadSnake.y = tileNumber;
     }
     
-    ctx.fillStyle = '#fbfaf1';
+    ctx.fillStyle = "rgba(255,255,255,1 )";
     
+    ctx.shadowBlur = 20;
+    ctx.shadowColor = "rgba(255,255,255,.3 )";
+    ctx.fillRect(snakeTail[(snakeTail.length)-1].x*tileSize, snakeTail[(snakeTail.length)-1].y*tileSize, tileSize, tileSize);
+    ctx.shadowBlur = 0;
+
     for(let i = 0; i < snakeTail.length; i++){
+        ctx.lineWidth = 2;
+        ctx.fillStyle = "rgba(255,255,255,.85 )";
         ctx.fillRect(snakeTail[(snakeTail.length-i)-1].x*tileSize, snakeTail[(snakeTail.length-i)-1].y*tileSize, tileSize, tileSize);
     }
 }
