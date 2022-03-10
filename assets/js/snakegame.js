@@ -1,7 +1,5 @@
 const canvas = document.getElementById('underworld-bg');
 let ctx = canvas.getContext('2d');
-const tileNumber = 20;
-const tileSize = canvas.width/tileNumber;
 let gameSpeed; // this is the speed the game goes.
 let snakeTailLength = 8; // initial length of the snake
 let snakeTail; // snake positions
@@ -17,6 +15,19 @@ let prevDirection = {x:0, y:0};
 /**
  * Setting up the canvas
  */
+
+if(window.innerWidth < 550){
+    canvas.width = window.innerWidth - 50;
+    canvas.height = window.innerWidth - 50;
+}
+if(window.innerHeight < 650){
+    canvas.width = window.innerHeight - 150;
+    canvas.height = window.innerHeight - 150;
+}
+
+const tileNumber = 20;
+const tileSize = canvas.width/tileNumber;
+
 function clearScreen(){ //clears the screen
     ctx.fillStyle = '#181825'
     ctx.fillRect(0,0,canvas.width,canvas.height);
@@ -100,16 +111,19 @@ function keyEventPress(e){
     } else if(e.keyCode === 38){
         if(snakeSpeed.y !== 1){
             snakeSpeed = {x:0, y:-1}
+
         } else console.log("Error, you can not go up while going down")
         
     } else if(e.keyCode === 39){
         
         if(snakeSpeed.x !== -1){
             snakeSpeed = {x:1, y:0}
+
         } else console.log("Error, you can not go right while going left")
     } else if(e.keyCode === 40){
         if(snakeSpeed.y !== -1){
             snakeSpeed = {x:0, y:1}
+
         } else console.log("Error, you can not go down while going up")
     }
 
@@ -139,7 +153,6 @@ function checkCollision(){
     snakePosition(newHeadSnake);
     
     // if snake ate the food, create a new position for the food
-    console.log(newHeadSnake)
     if(snakeFoodPosition.x === newHeadSnake.x && snakeFoodPosition.y === newHeadSnake.y){
 
         
@@ -216,9 +229,6 @@ function scoreCounter(){
             gameSpeed = gameSpeed + 2;
         }
     }
-
-    console.log(gameSpeed)
-
     document.getElementsByClassName('current-score')[0].innerHTML = score;
 }
 
