@@ -4,13 +4,45 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A snake game created for my milestone project 2 for code-Institute">
+    <meta name="keywords" content="HTML, CSS,Font-Awesome, Google-Fonts, Javascirpt">
+    <meta name="author" content="Michael Kefalas">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Underworld</title>
+    <title>The Underground Snake || MK</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
     <link rel="stylesheet" href="assets/css/styles.css" type="text/css">
     <script src="assets/js/joy.js"></script>
 </head>
 
 <body>
+    <audio id="upAudio">
+        <source src="assets/audio/ogg/audio_up.ogg" type="audio/ogg">
+        <source src="assets/audio/audio_up.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <audio id="downAudio">
+        <source src="assets/audio/ogg/audio_down.ogg" type="audio/ogg">
+        <source src="assets/audio/audio_down.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="leftAudio">
+        <source src="assets/audio/ogg/audio_left.ogg" type="audio/ogg">
+        <source src="audio/audio_left.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="rightAudio">
+        <source src="assets/audio/ogg/audio_right.ogg" type="audio/ogg">
+        <source src="assets/audio/audio_right.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="eatFoodAudio">
+        <source src="assets/audio/ogg/audio_eat.ogg" type="audio/ogg">
+        <source src="assets/audio/audio_eat.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="dieAudio">
+        <source src="assets/audio/ogg/audio_dead.ogg" type="audio/ogg">
+        <source src="assets/audio/audio_dead.mp3" type="audio/mpeg">
+    </audio>
     <div class="bg">
         <h1 class="game-name">Hades Snake Game</h1>
         <section class="flex main-game-area">

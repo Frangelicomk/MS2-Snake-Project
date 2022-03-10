@@ -12,6 +12,7 @@ html {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  cursor: url('../images/curson_btn_pa2_icon.ico'), auto;
 }
 
 .bg {
@@ -104,6 +105,10 @@ a {
   transform: rotate(-90deg);
 }
 
+.button-34:hover {
+  cursor: url('../images/curson_btn_pa2_icon.ico'), auto;
+}
+
 #controls-for-user {
   display: none;
 }
@@ -167,6 +172,7 @@ a {
 
   .button-wrap{
       padding: 1rem;
+      cursor: url('path-to-image.png'), auto;
   }
 
 .order-1 { order: 3; }
