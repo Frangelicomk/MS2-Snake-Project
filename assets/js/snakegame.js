@@ -178,14 +178,7 @@ function keyEventPress(e) {
     gameStart = true;
   }
 
-  if (e.keyCode === 32) {
-    if (!gameIsLost) {
-      gameStart = true;
-    } else {
-      gameIsLost = false;
-      resetGame();
-    }
-  }
+
 }
 
 // This function will make the snake eat the food and also check if GAME OVER due to collision with tail
@@ -293,21 +286,29 @@ function gameOver() {
   if (gameIsLost) {
     ctx.fillStyle = "#181825";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.font = `${(48/500)*canvas.width}px Arial`;
+    ctx.font = `${(48/500)*canvas.width}px 'Amatic SC', cursive, sans-serif`;
     ctx.fillStyle = "white";
     ctx.textAlign = "center";
     ctx.fillText(`GAME OVER`, canvas.width/2, canvas.height/4);
 
-    ctx.font = `${(30/500)*canvas.width}px Arial`;
+    ctx.font = `${(30/500)*canvas.width}px 'Amatic SC', cursive, sans-serif`;
     ctx.fillStyle = "white";
     ctx.textAlign = "center";
     ctx.fillText(`Your Score: ${parseInt(score)}`, canvas.width/2, canvas.height/2.4);
 
-    ctx.font = `${(30/500)*canvas.width}px Arial`;
+    ctx.font = `${(30/500)*canvas.width}px 'Amatic SC', cursive, sans-serif`;
     ctx.fillStyle = "white";
     ctx.textAlign = "center";
     ctx.fillText(`Your Highest Score was: ${parseInt(highScore)}`, canvas.width/2, canvas.height/2);
+
+    // document.getElementById("restart").style.display = "block";
   }
+}
+
+function restartTheGame(){
+    document.getElementById("restart").addEventListener('keydown', function(){
+        
+    },false );
 }
 
 function underworldSnakeGame() {

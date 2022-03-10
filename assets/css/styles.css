@@ -1,139 +1,189 @@
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Cinzel&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Cinzel&display=swap");
 
 /* font-family: 'Amatic SC', cursive;
 font-family: 'Cinzel', serif; */
 html {
-    font-family: 'Amatic SC', cursive, sans-serif;
+  font-family: "Amatic SC", cursive, sans-serif;
 }
 
-
-body, html {
+body,
+html {
   height: 100%;
   margin: 0;
   padding: 0;
   overflow: hidden;
 }
 
-.bg{
-    background-image: url('../images/underworld.jpg');
-    background-color: darkslategray;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    -o-background-size: cover;
-    -moz-background-size: cover;
-    -webkit-background-size: cover;
+.bg {
+  background-image: url("../images/underworld.jpg");
+  background-color: darkslategray;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
 
-    height: 100%;
-    overflow: hidden;
+  height: 100%;
+  overflow: hidden;
 }
 
-
 a {
-    text-decoration: none;
-    color: bisque;
+  text-decoration: none;
+  color: bisque;
 }
 
 #scores {
-    color: bisque;
-    font-size: 30px;
-    
-}
-#game-status {
-    font-size: 35px;
-    font-weight: bold;
-    text-align: center;
-}
-.game-name {
-    margin-top: 0px;
-    padding-top: 1rem;
-    font-size: 50px;
-    color: bisque;
-    text-align: center;
-    text-decoration: none;
+  color: bisque;
+  font-size: 1.3em;
+  writing-mode: vertical-rl;
 }
 
-.game-status{
-    color: white;
+#scores > h2 {
+    display: inline-block;
+    padding: 1rem;
+    margin: 0px;
+}
+
+#scores > h2 > span {
+    writing-mode: horizontal-tb;
+}
+
+#game-status {
+  font-size: 35px;
+  font-weight: bold;
+  text-align: center;
+}
+.game-name {
+  margin-top: 0px;
+  padding-top: 1rem;
+  font-size: 50px;
+  color: bisque;
+  text-align: center;
+  text-decoration: none;
+}
+
+.game-status {
+  color: white;
 }
 
 .main-game-area {
-    margin: 0px;
-    padding: 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-#underworld-bg {
-    position: relative;
-    margin-left: 190px;
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#controls-for-user{
-    display: none;
+#underworld-bg {
+  position: relative;
+}
+
+/* CSS example from https://getcssscan.com/css-buttons-examples*/
+.button-34 {
+  background: #5E5DF0;
+  border-radius: 999px;
+  box-shadow: #5E5DF0 0 10px 20px -10px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 8px 18px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: fit-content;
+  word-break: break-word;
+  border: 0;
+  /* margin-left: 40px; */
+  transform: rotate(-90deg);
+}
+
+#controls-for-user {
+  display: none;
 }
 
 .socials {
-    position: absolute;
-    margin-bottom: 10px;
-    right: 0;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: flex-end;
+  position: absolute;
+  margin-bottom: 10px;
+  right: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-end;
 }
 .socials a {
-    
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 .socials a:hover {
-    color: rgb(233, 135, 16);
+  color: rgb(233, 135, 16);
 }
 
 .arrow-keys {
-    font-size: 10px;
+  font-size: 10px;
 }
 
-@media only screen and (max-width: 1024px) and (min-height: 650px) {
-    .game-name{
-        padding: 0;
-        margin: 0px;
-    }
-    .main-game-area{
-        flex-direction: column;
-    }
-    #underworld-bg{
-        margin:0;
-    }
+.order-1 { order: 1; }
+.order-2 { order: 2; }
+.order-3 { order: 3; }
 
-    #scores{
-        display: flex;
-    }
-    
-    #scores > h2{
-        padding: 1rem;
-        margin:0px;
-    }
+@media only screen and (max-width: 1024px) and (min-height: 650px) {
+  .game-name {
+    padding: 0;
+    margin: 0px;
+  }
+  .main-game-area {
+    flex-direction: column;
+  }
+  #underworld-bg {
+    margin: 0;
+  }
+
+  #scores {
+    display: flex;
+    writing-mode: horizontal-tb;
+  }
+
+  #scores > h2 {
+    padding: 1rem;
+    margin: 0px;
+  }
+
+  .button-34{
+      transform: rotate(0deg);
+      margin: 0px;
+  }
+
+  .button-wrap{
+      padding: 2rem;
+  }
+
+.order-1 { order: 2; }
+.order-2 { order: 1; }
+.order-3 { order: 3; }
 }
 
 @media only screen and (max-width: 560px) {
-    #scores > h2{
-        font-size: 2rem;
-    }
+  #scores > h2 {
+    font-size: 2rem;
+  }
 }
 
 @media only screen and (max-width: 450px) {
-
-    .socials a {
-        font-size: 1.5rem;
-    }
+  .socials a {
+    font-size: 1.5rem;
+  }
 }
 
 @media only screen and (max-width: 285px) {
-
-    #scores > h2{
-        font-size: 1.5rem;
-    }
+  #scores > h2 {
+    font-size: 1.5rem;
+  }
 }
