@@ -24,6 +24,10 @@ window.addEventListener("resize", function(){
     resizeCanvasResponsive()
 }, false);
 
+window.addEventListener("orientationchange", function(){
+    resizeCanvasResponsive()
+}, false);
+
 function resizeCanvasResponsive(){
     if(window.innerWidth < 565){
         canvas.width = window.innerWidth - 65;

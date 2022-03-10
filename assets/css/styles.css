@@ -14,13 +14,15 @@ body, html {
   overflow: hidden;
 }
 
-
 .bg{
-    background-image: url('/assets/images/underworld.jpg');
+    background-image: url('../images/underworld.jpg');
     background-color: darkslategray;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
 
     height: 100%;
     overflow: hidden;
