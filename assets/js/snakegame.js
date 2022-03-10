@@ -14,6 +14,8 @@ let score; // score counter
 let highScore = 0; // highscore record
 let isMobile = false;
 let joy;
+let g = 0;
+let r = 0;
 
 const upAudio = document.getElementById("upAudio"); 
 const downAudio = document.getElementById("downAudio"); 
@@ -116,11 +118,32 @@ function clearScreen() {
   }
 }
 
+function randomFoodRGB(){
+    let baseColors = ['r', 'g', 'b'];
+    let baseColor = baseColors[Math.floor(Math.random()*3)];
+    if(baseColor == 'r'){
+        r = 255;
+        g = Math.floor(Math.random()*250); // fruid red value
+        b = Math.floor(Math.random()*80); // fruit green value
+    }
+    else if(baseColor == 'g'){
+        r = Math.floor(Math.random()*80); // fruid red value
+        g = 255;
+        b = Math.floor(Math.random()*80); // fruit green value
+    }
+    else if(baseColor == 'b'){
+        r = Math.floor(Math.random()*80); // fruid red value
+        g = Math.floor(Math.random()*80); // fruit green value
+        b = 255;
+    }
+}
+
 // this function draws the food
 function drawFood() {
-  ctx.fillStyle = "blue";
-  ctx.shadowBlur = 20;
-  ctx.shadowColor = "rgba(0,0,255,1 )"; // I got the design idea from https://codepen.io/fariati
+    
+  ctx.fillStyle = `rgb(${r}, ${g},${b})`;
+  ctx.shadowBlur = 30;
+  ctx.shadowColor = `rgba(${r},${g},${b},1 )`; // I got the design idea from https://codepen.io/fariati
   ctx.fillRect(
     snakeFoodPosition.x * tileSize,
     snakeFoodPosition.y * tileSize,
@@ -327,6 +350,8 @@ function spawnFood(newHeadSnake) {
       x: Math.floor(Math.random() * tileNumber),
       y: Math.floor(Math.random() * tileNumber),
     };
+
+    randomFoodRGB();
 
     for (let t = 0; t < snakeTail.length; t++) {
       let tile = snakeTail[t];
