@@ -218,30 +218,31 @@ function joystickPlay(){
     if(isMobile){
         var x = joy.GetX();
         var y = joy.GetY();
+        let sensitivity = 60;
     
-        if (x <= -30 && x >= -100 ) {
+        if (x <= -sensitivity && x >= -100 ) {
             if (snakeSpeed.x !== 1) {
                 snakeSpeed = { x: -1, y: 0 };
             }
-        } else if (y >= 30 && y <= 100) {
+        } else if (y >= sensitivity && y <= 100) {
             if (snakeSpeed.y !== 1) {
                 snakeSpeed = { x: 0, y: -1 };
             }
-        } else if (x >= 30 && x <= 100) {
+        } else if (x >= sensitivity && x <= 100) {
             if (snakeSpeed.x !== -1) {
                 snakeSpeed = { x: 1, y: 0 };
             }
-        } else if (y <= -30 && y >= -100) {
+        } else if (y <= -sensitivity && y >= -100) {
             if (snakeSpeed.y !== -1) {
                 snakeSpeed = { x: 0, y: 1 };
             }
         }
     
         if (
-            x <= -30 && x >= -100 ||
-            y >= 30 && y <= 100 ||
-            x >= 30 && x <= 100 ||
-            y <= -30 && y >= -100
+            x <= -sensitivity && x >= -100 ||
+            y >= sensitivity && y <= 100 ||
+            x >= sensitivity && x <= 100 ||
+            y <= -sensitivity && y >= -100
         ) {
             gameStart = true;
         }
