@@ -30,15 +30,15 @@ if(isMobile){
       width: undefined,
       height: undefined,
       // Internal color of Stick
-      internalFillColor: '#00AA00',
+      internalFillColor: 'rgba(255,255,255,1 )',
       // Border width of Stick
       internalLineWidth: 2,
       // Border color of Stick
-      internalStrokeColor: '#003300',
+      internalStrokeColor: 'rgba(255,255,255,1 )',
       // External reference circonference width
       externalLineWidth: 2,
       //External reference circonference color
-      externalStrokeColor: '#008000',
+      externalStrokeColor: 'rgba(255,255,255,1 )',
       // Sets the behavior of the stick
       autoReturnToCenter: true
     });
@@ -73,11 +73,11 @@ function resizeCanvasResponsive() {
     canvas.width = window.innerWidth - 65;
     canvas.height = window.innerWidth - 65;
   }
-  if (window.innerHeight < 650) {
-    canvas.width = window.innerHeight - 150;
-    canvas.height = window.innerHeight - 150;
+  if (window.innerHeight < 675) {
+    canvas.width = window.innerHeight - 175;
+    canvas.height = window.innerHeight - 175;
   }
-  if (window.innerWidth >= 550 && window.innerHeight >= 650) {
+  if (window.innerWidth >= 550 && window.innerHeight >= 675) {
     canvas.width = 500;
     canvas.height = 500;
     
