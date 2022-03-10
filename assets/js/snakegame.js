@@ -12,7 +12,37 @@ let gameStart;
 let gameIsLost;
 let score; // score counter
 let highScore = 0; // highscore record
-let prevDirection = { x: 0, y: 0 };
+let isMobile = false;
+let joy;
+
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768){
+    isMobile = true;
+}
+
+if(isMobile){
+    document.getElementById("joyDiv").style.display = "block"
+    // this was copied from https://www.cssscript.com/onscreen-joystick/#:~:text=Description%3A-,JoyStick.,for%20your%20game%20web%20app with Author bobbotech
+     // loads the joystick 
+    joy = new JoyStick('joyDiv',{
+      // The ID of canvas element
+      title: 'joystick',
+      // width/height
+      width: undefined,
+      height: undefined,
+      // Internal color of Stick
+      internalFillColor: '#00AA00',
+      // Border width of Stick
+      internalLineWidth: 2,
+      // Border color of Stick
+      internalStrokeColor: '#003300',
+      // External reference circonference width
+      externalLineWidth: 2,
+      //External reference circonference color
+      externalStrokeColor: '#008000',
+      // Sets the behavior of the stick
+      autoReturnToCenter: true
+    });
+}
 
 /**
  * Setting up the canvas
@@ -104,7 +134,7 @@ function snakePosition(newHeadSnake) {
   if (newHeadSnake.y === tileNumber) {
     newHeadSnake.y = 0;
   } else if (newHeadSnake.y === -1) {
-    newHeadSnake.y = tileNumber - 1;
+    newHeadSnake.y = tileNumber - 1; 
   }
 }
 // this function draws the snake
@@ -151,6 +181,8 @@ document.addEventListener("keydown", keyEventPress);
 
 // This function controls the movement of the snake
 function keyEventPress(e) {
+
+    // keyboard control
   if (e.keyCode === 37) {
     if (snakeSpeed.x !== 1) {
       snakeSpeed = { x: -1, y: 0 };
@@ -177,7 +209,41 @@ function keyEventPress(e) {
   ) {
     gameStart = true;
   }
+}
 
+function joystickPlay(){
+    
+    if(isMobile){
+        var x = joy.GetX();
+        var y = joy.GetY();
+    
+        if (x == -100) {
+            if (snakeSpeed.x !== 1) {
+                snakeSpeed = { x: -1, y: 0 };
+            }
+        } else if (y == 100) {
+            if (snakeSpeed.y !== 1) {
+                snakeSpeed = { x: 0, y: -1 };
+            }
+        } else if (x == 100) {
+            if (snakeSpeed.x !== -1) {
+                snakeSpeed = { x: 1, y: 0 };
+            }
+        } else if (y == -100) {
+            if (snakeSpeed.y !== -1) {
+                snakeSpeed = { x: 0, y: 1 };
+            }
+        }
+    
+        if (
+            x === -100 ||
+            y == 100 ||
+            x == 100 ||
+            y == -100
+        ) {
+            gameStart = true;
+        }
+    }
 
 }
 
@@ -306,11 +372,12 @@ function gameOver() {
 
 document.getElementById("restart").onclick = function(){
     resetGame();
-}
+};
 
 function underworldSnakeGame() {
   if (!gameIsLost) {
     removeTail = true;
+    joystickPlay()
     clearScreen();
     checkCollision();
     drawSnake();
