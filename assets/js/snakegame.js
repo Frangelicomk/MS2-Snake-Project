@@ -3,13 +3,13 @@ let ctx = canvas.getContext("2d");
 let tileNumber = 20;
 let tileSize = canvas.width / tileNumber;
 let gameSpeed; // this is the speed the game goes.
-let snakeTailLength = 8; // initial length of the snake
+let snakeTailLength = 2; // initial length of the snake
 let snakeTail; // snake positions
 let snakeSpeed;
 let snakeFoodPosition;
 let removeTail = true;
 let gameStart;
-let gameIsLost = false;
+let gameIsLost;
 let score; // score counter
 let highScore = 0; // highscore record
 let prevDirection = { x: 0, y: 0 };
@@ -216,9 +216,10 @@ function checkCollision() {
 
 function resetGame() {
   clearScreen();
+  gameIsLost = false;
   gameStart = false; // game is paused
   snakeTail = []; // reset snake
-  gameSpeed = 10;
+  gameSpeed = 7;
   snakeSpeed = { x: 0, y: 0 }; // initialize snake speed
   score = 0;
 
@@ -300,15 +301,11 @@ function gameOver() {
     ctx.fillStyle = "white";
     ctx.textAlign = "center";
     ctx.fillText(`Your Highest Score was: ${parseInt(highScore)}`, canvas.width/2, canvas.height/2);
-
-    // document.getElementById("restart").style.display = "block";
   }
 }
 
-function restartTheGame(){
-    document.getElementById("restart").addEventListener('keydown', function(){
-        
-    },false );
+document.getElementById("restart").onclick = function(){
+    resetGame();
 }
 
 function underworldSnakeGame() {
