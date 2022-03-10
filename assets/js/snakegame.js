@@ -15,6 +15,13 @@ let highScore = 0; // highscore record
 let isMobile = false;
 let joy;
 
+const upAudio = document.getElementById("upAudio"); 
+const downAudio = document.getElementById("downAudio"); 
+const leftAudio = document.getElementById("leftAudio"); 
+const rightAudio = document.getElementById("rightAudio"); 
+const eatFoodAudio = document.getElementById("eatFoodAudio"); 
+const dieAudio = document.getElementById("dieAudio"); 
+
 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768){
     isMobile = true;
 }
@@ -69,23 +76,21 @@ window.addEventListener(
 );
 
 function resizeCanvasResponsive() {
-  if (window.innerWidth < 565) {
-    canvas.width = window.innerWidth - 65;
-    canvas.height = window.innerWidth - 65;
-  }
-  if (window.innerHeight < 675) {
-    canvas.width = window.innerHeight - 175;
-    canvas.height = window.innerHeight - 175;
-  }
-  if (window.innerWidth >= 550 && window.innerHeight >= 675) {
-    canvas.width = 500;
-    canvas.height = 500;
-    
-  }
+    if (window.innerHeight < 675) {
+        canvas.width = window.innerHeight - 175;
+        canvas.height = window.innerHeight - 175;
+    }
+    if (window.innerWidth < 565) {
+        canvas.width = window.innerWidth - 65;
+        canvas.height = window.innerWidth - 65;
+    }
 
-  
-
-  tileSize = canvas.width / tileNumber;
+    if (window.innerWidth >= 550 && window.innerHeight >= 675) {
+        canvas.width = 500;
+        canvas.height = 500;
+        
+    }
+    tileSize = canvas.width / tileNumber;
 }
 
 function clearScreen() {
@@ -186,18 +191,22 @@ function keyEventPress(e) {
   if (e.keyCode === 37) {
     if (snakeSpeed.x !== 1) {
       snakeSpeed = { x: -1, y: 0 };
+      leftAudio.play(); 
     } else console.log("Error, you can not go  left while going right");
   } else if (e.keyCode === 38) {
     if (snakeSpeed.y !== 1) {
       snakeSpeed = { x: 0, y: -1 };
+      upAudio.play(); 
     } else console.log("Error, you can not go up while going down");
   } else if (e.keyCode === 39) {
     if (snakeSpeed.x !== -1) {
       snakeSpeed = { x: 1, y: 0 };
+      rightAudio.play(); 
     } else console.log("Error, you can not go right while going left");
   } else if (e.keyCode === 40) {
     if (snakeSpeed.y !== -1) {
       snakeSpeed = { x: 0, y: 1 };
+      downAudio.play(); 
     } else console.log("Error, you can not go down while going up");
   }
 
@@ -212,29 +221,31 @@ function keyEventPress(e) {
 }
 
 function joystickPlay(){
-
-    console.log(isMobile)
     
     if(isMobile){
         var x = joy.GetX();
         var y = joy.GetY();
-        let sensitivity = 60;
+        let sensitivity = 80;
     
         if (x <= -sensitivity && x >= -100 ) {
             if (snakeSpeed.x !== 1) {
                 snakeSpeed = { x: -1, y: 0 };
+                leftAudio.play(); 
             }
         } else if (y >= sensitivity && y <= 100) {
             if (snakeSpeed.y !== 1) {
                 snakeSpeed = { x: 0, y: -1 };
+                upAudio.play(); 
             }
         } else if (x >= sensitivity && x <= 100) {
             if (snakeSpeed.x !== -1) {
                 snakeSpeed = { x: 1, y: 0 };
+                rightAudio.play(); 
             }
         } else if (y <= -sensitivity && y >= -100) {
             if (snakeSpeed.y !== -1) {
                 snakeSpeed = { x: 0, y: 1 };
+                downAudio.play(); 
             }
         }
     
@@ -269,6 +280,8 @@ function checkCollision() {
 
     scoreCounter();
 
+    eatFoodAudio.play();
+
     removeTail = false; // don't remove tail to increase the snake by one block
   }
   // if snake hit itself, GAME OVER
@@ -277,6 +290,7 @@ function checkCollision() {
       let tail = snakeTail[t];
       if (tail.x == newHeadSnake.x && tail.y == newHeadSnake.y) {
         gameIsLost = true;
+        dieAudio.play();
         break;
       }
     }
