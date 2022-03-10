@@ -395,6 +395,7 @@ function gameOver() {
   if (gameIsLost) {
     ctx.fillStyle = "#181825";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.shadowColor = 'rgba(0,0,0,1)';
     ctx.font = `${(48/500)*canvas.width}px 'Amatic SC', cursive, sans-serif`;
     ctx.fillStyle = "white";
     ctx.textAlign = "center";
