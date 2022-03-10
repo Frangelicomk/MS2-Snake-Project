@@ -218,8 +218,6 @@ function joystickPlay(){
     if(isMobile){
         var x = joy.GetX();
         var y = joy.GetY();
-
-        console.log(x, y)
     
         if (x <= -8 && x >= -100 ) {
             if (snakeSpeed.x !== 1) {
