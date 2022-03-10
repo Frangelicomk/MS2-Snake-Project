@@ -212,24 +212,28 @@ function keyEventPress(e) {
 }
 
 function joystickPlay(){
+
+    console.log(isMobile)
     
     if(isMobile){
         var x = joy.GetX();
         var y = joy.GetY();
+
+        console.log(x, y)
     
-        if (x <= -8 || x >= -100) {
+        if (x <= -8 && x >= -100 ) {
             if (snakeSpeed.x !== 1) {
                 snakeSpeed = { x: -1, y: 0 };
             }
-        } else if (y <= 8 || y >= 100) {
+        } else if (y >= 8 && y <= 100) {
             if (snakeSpeed.y !== 1) {
                 snakeSpeed = { x: 0, y: -1 };
             }
-        } else if (x <= 8 || x >= 100) {
+        } else if (x >= 8 && x <= 100) {
             if (snakeSpeed.x !== -1) {
                 snakeSpeed = { x: 1, y: 0 };
             }
-        } else if (y <= -8 || y >= -100) {
+        } else if (y <= -8 && y >= -100) {
             if (snakeSpeed.y !== -1) {
                 snakeSpeed = { x: 0, y: 1 };
             }
