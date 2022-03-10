@@ -1,5 +1,7 @@
 const canvas = document.getElementById('underworld-bg');
 let ctx = canvas.getContext('2d');
+let tileNumber = 20;
+let tileSize = canvas.width/tileNumber;
 let gameSpeed; // this is the speed the game goes.
 let snakeTailLength = 8; // initial length of the snake
 let snakeTail; // snake positions
@@ -16,17 +18,28 @@ let prevDirection = {x:0, y:0};
  * Setting up the canvas
  */
 
-if(window.innerWidth < 550){
-    canvas.width = window.innerWidth - 50;
-    canvas.height = window.innerWidth - 50;
-}
-if(window.innerHeight < 650){
-    canvas.width = window.innerHeight - 150;
-    canvas.height = window.innerHeight - 150;
-}
+resizeCanvasResponsive();
 
-const tileNumber = 20;
-const tileSize = canvas.width/tileNumber;
+window.addEventListener("resize", function(){
+    resizeCanvasResponsive()
+}, false);
+
+function resizeCanvasResponsive(){
+    if(window.innerWidth < 565){
+        canvas.width = window.innerWidth - 65;
+        canvas.height = window.innerWidth - 65;
+    }
+    if(window.innerHeight < 650){
+        canvas.width = window.innerHeight - 150;
+        canvas.height = window.innerHeight - 150;
+    }
+    if(window.innerWidth >= 550 && window.innerHeight >= 650){
+        canvas.width = 500;
+        canvas.height = 500;
+    }
+
+    tileSize = canvas.width/tileNumber;
+}
 
 function clearScreen(){ //clears the screen
     ctx.fillStyle = '#181825'
