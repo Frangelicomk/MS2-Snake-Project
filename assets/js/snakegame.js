@@ -20,10 +20,12 @@ let prevDirection = {x:0, y:0};
 
 resizeCanvasResponsive();
 
+// resize canvas on screen resize
 window.addEventListener("resize", function(){
     resizeCanvasResponsive()
 }, false);
 
+// resize canvas on phone rotation
 window.addEventListener("orientationchange", function(){
     resizeCanvasResponsive()
 }, false);
