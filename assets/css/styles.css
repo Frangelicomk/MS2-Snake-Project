@@ -172,7 +172,6 @@ a {
 
   .button-wrap{
       padding: 1rem;
-      cursor: url('path-to-image.png'), auto;
   }
 
 .order-1 { order: 3; }
