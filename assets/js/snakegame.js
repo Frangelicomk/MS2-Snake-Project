@@ -318,6 +318,7 @@ function checkCollision() {
       if (tail.x == newHeadSnake.x && tail.y == newHeadSnake.y) {
         gameIsLost = true;
         dieAudio.play();
+        navigator.vibrate(300);
         break;
       }
     }
