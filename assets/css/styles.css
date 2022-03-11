@@ -59,6 +59,15 @@ a {
   font-weight: bold;
   text-align: center;
 }
+
+#restart{
+  /* transform: rotate(-90deg); */
+  height: 220px;
+  width: 20px;
+  margin: 10px;
+}
+
+
 .game-name {
   margin-top: 0px;
   padding-top: 1rem;
@@ -101,14 +110,10 @@ a {
   width: fit-content;
   word-break: break-word;
   border: 0;
-  margin-left: -15px;
+  /* margin-left: -15px; */
 }
 
 
-#restart{
-  transform: rotate(-90deg);
-margin-left: -85px;
-}
 
 .button-34:hover {
   cursor: url("../images/curson_btn_pa2_icon.ico"), auto;
@@ -161,7 +166,7 @@ margin-left: -85px;
     margin: 0px;
   }
 
-  #restart {
+  #restart{
     transform: rotate(0deg);
     margin: 0px;
   }
