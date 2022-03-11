@@ -14,6 +14,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
     <link rel="manifest" href="assets/favicon/site.webmanifest">
     <link rel="stylesheet" href="assets/css/styles.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/mainMenu.css" type="text/css">
     <script src="assets/js/joy.js"></script>
 </head>
 
@@ -43,7 +44,21 @@
         <source src="assets/audio/ogg/audio_dead.ogg" type="audio/ogg">
         <source src="assets/audio/audio_dead.mp3" type="audio/mpeg">
     </audio>
-    <div class="bg">
+
+    <div class="main-menu">
+        <div class="dialogue">
+            <div class="img-wrap">
+                <div class="bubble">
+                    <p id="text"></p>
+                    <input type="text" name="username" id="username" value="" placeholder="Enter your Name">
+                    <button type="button" id="submitName">Declare your name to Hades</button>
+                </div>
+                <img src="assets/images/hadeswelcomeintro.png" alt="" class="hades-intro">
+            </div>
+        </div>
+    <div>
+
+    <div class="bg game-area">
         <h1 class="game-name">Hades Snake Game</h1>
         <section class="flex main-game-area">
             <div class="button-wrap order-1">
@@ -79,6 +94,7 @@
         <div id="joyDiv" style="width:200px;height:200px;margin-bottom:0px;margin:auto"></div>
     </div>
     <script src="https://kit.fontawesome.com/28d7ca0192.js" crossorigin="anonymous"></script>
+    <script src="assets/js/loadingmenu.js"></script>
     <script src="assets/js/snakegame.js"></script>
     <script src="assets/js/socials.js"></script>
 </body>
