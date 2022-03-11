@@ -14,8 +14,9 @@ let score; // score counter
 let highScore = 0; // highscore record
 let isMobile = false;
 let joy;
-let g = 0;
 let r = 0;
+let g = 0;
+let b = 0;
 
 const upAudio = document.getElementById("upAudio"); 
 const downAudio = document.getElementById("downAudio"); 
@@ -136,6 +137,8 @@ function randomFoodRGB(){
         g = Math.floor(Math.random()*80); // fruit green value
         b = 255;
     }
+
+
 }
 
 // this function draws the food
@@ -432,6 +435,7 @@ function underworldSnakeGame() {
 
   setTimeout(underworldSnakeGame, 1000 / gameSpeed);
 }
+
 
 resetGame();
 underworldSnakeGame();
