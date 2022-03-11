@@ -79,16 +79,16 @@ window.addEventListener(
 );
 
 function resizeCanvasResponsive() {
-    if (window.innerHeight < 675) {
-        canvas.width = window.innerHeight - 175;
-        canvas.height = window.innerHeight - 175;
+    if (window.innerHeight < 725) {
+        canvas.width = window.innerHeight - 225;
+        canvas.height = window.innerHeight - 225;
     }
     if (window.innerWidth < 565) {
         canvas.width = window.innerWidth - 65;
         canvas.height = window.innerWidth - 65;
     }
 
-    if (window.innerWidth >= 550 && window.innerHeight >= 675) {
+    if (window.innerWidth >= 550 && window.innerHeight >= 725) {
         canvas.width = 500;
         canvas.height = 500;
         
