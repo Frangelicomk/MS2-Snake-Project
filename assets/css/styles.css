@@ -26,11 +26,11 @@ html {
   -moz-background-size: cover;
   -webkit-background-size: cover;
   height: 100%;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .bg {
-  display: none;
+  display: block;
 }
 
 a {
@@ -105,7 +105,12 @@ a {
   word-break: break-word;
   border: 0;
   margin-left: -15px;
+}
+
+
+#restart{
   transform: rotate(-90deg);
+
 }
 
 .button-34:hover {

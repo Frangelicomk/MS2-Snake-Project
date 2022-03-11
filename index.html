@@ -1,102 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="A snake game created for my milestone project 2 for code-Institute">
-    <meta name="keywords" content="HTML, CSS,Font-Awesome, Google-Fonts, Javascirpt">
-    <meta name="author" content="Michael Kefalas">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="description"
+      content="A snake game created for my milestone project 2 for code-Institute"
+    />
+    <meta
+      name="keywords"
+      content="HTML, CSS,Font-Awesome, Google-Fonts, Javascirpt"
+    />
+    <meta name="author" content="Michael Kefalas" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Underworld Snake || MK</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
-    <link rel="manifest" href="assets/favicon/site.webmanifest">
-    <link rel="stylesheet" href="assets/css/styles.css" type="text/css">
-    <link rel="stylesheet" href="assets/css/mainMenu.css" type="text/css">
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="assets/favicon/site.webmanifest" />
+    <link rel="stylesheet" href="assets/css/styles.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/mainMenu.css" type="text/css" />
     <script src="assets/js/joy.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <audio id="upAudio">
-        <source src="assets/audio/ogg/audio_up.ogg" type="audio/ogg">
-        <source src="assets/audio/audio_up.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
+      <source src="assets/audio/ogg/audio_up.ogg" type="audio/ogg" />
+      <source src="assets/audio/audio_up.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
     </audio>
     <audio id="downAudio">
-        <source src="assets/audio/ogg/audio_down.ogg" type="audio/ogg">
-        <source src="assets/audio/audio_down.mp3" type="audio/mpeg">
+      <source src="assets/audio/ogg/audio_down.ogg" type="audio/ogg" />
+      <source src="assets/audio/audio_down.mp3" type="audio/mpeg" />
     </audio>
     <audio id="leftAudio">
-        <source src="assets/audio/ogg/audio_left.ogg" type="audio/ogg">
-        <source src="audio/audio_left.mp3" type="audio/mpeg">
+      <source src="assets/audio/ogg/audio_left.ogg" type="audio/ogg" />
+      <source src="audio/audio_left.mp3" type="audio/mpeg" />
     </audio>
     <audio id="rightAudio">
-        <source src="assets/audio/ogg/audio_right.ogg" type="audio/ogg">
-        <source src="assets/audio/audio_right.mp3" type="audio/mpeg">
+      <source src="assets/audio/ogg/audio_right.ogg" type="audio/ogg" />
+      <source src="assets/audio/audio_right.mp3" type="audio/mpeg" />
     </audio>
     <audio id="eatFoodAudio">
-        <source src="assets/audio/ogg/audio_eat.ogg" type="audio/ogg">
-        <source src="assets/audio/audio_eat.mp3" type="audio/mpeg">
+      <source src="assets/audio/ogg/audio_eat.ogg" type="audio/ogg" />
+      <source src="assets/audio/audio_eat.mp3" type="audio/mpeg" />
     </audio>
     <audio id="dieAudio">
-        <source src="assets/audio/ogg/audio_dead.ogg" type="audio/ogg">
-        <source src="assets/audio/audio_dead.mp3" type="audio/mpeg">
+      <source src="assets/audio/ogg/audio_dead.ogg" type="audio/ogg" />
+      <source src="assets/audio/audio_dead.mp3" type="audio/mpeg" />
     </audio>
 
     <div class="main-menu">
-        <div class="dialogue">
-            <div class="img-wrap">
-                <div class="bubble">
-                    <p id="text"></p>
-                    <input type="text" name="username" id="username" value="" placeholder="Enter your Name">
-                    <button type="button" id="submitName">Declare your name to Hades</button>
-                </div>
-                <img src="assets/images/hadeswelcomeintro.png" alt="" class="hades-intro">
-            </div>
+      <div class="dialogue">
+        <div class="img-wrap">
+          <div class="bubble">
+            <p id="text"></p>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              maxlength="10"
+              value=""
+              placeholder="Enter your Name"
+              aria-required="true" aria-invalid="false"/>
+            <button type="button" id="submitName">
+              Declare your name to Hades
+            </button>
+            <p class="error"></p>
+          </div>
+          <div id="hades-menu" class="menu-buttons">
+            <button id="start-game" class="button-34">START THE GAME</button>
+            <button id="read-rules" class="button-34">READ THE RULES</button>
+          </div>
+          <img
+            src="assets/images/hadeswelcomeintro.png"
+            alt=""
+            class="hades-intro"
+          />
         </div>
-    <div>
-
-    <div class="bg game-area">
-        <h1 class="game-name">Hades Snake Game</h1>
-        <section class="flex main-game-area">
-            <div class="button-wrap order-1">
-                <button id="restart" class="button-34">
-                    Restart
-                </button>
-            </div>
-            <canvas id='underworld-bg' class="order-2" height="500" width="500"></canvas>
-            <div id="scores" class="order-3">
-                <h2>Score: <span class="current-score">00</span></h2>
-                <h2>Highest Score: <span class="highest-score">00</span></h2>
-            </div>
-        </section>
-        <section id="social-links" class="socials">
-            <a href="https://www.instagram.com/mk_kefalas/" rel="noopener" target="_blank"><span class="sr-only">
-                this link takes you to my instagram page
-            </span><i
-                    class="fa-brands fa-instagram"></i></a>
-            <a href="https://dribbble.com/MKefalas" rel="noopener" target="_blank"><span class="sr-only">
-                this link takes you to my dribble page
-            </span><i
-                    class="fa-brands fa-dribbble"></i></a>
-            <a href="https://github.com/Frangelicomk" rel="noopener" target="_blank"><span class="sr-only">
-                this link takes you to my github page
-            </span><i
-                    class="fa-brands fa-github"></i></a>
-            <a href="https://www.youtube.com/channel/UCk8uhVNXee2_r2m-JNvd2mA" target="_blank" rel="noopener"><span class="sr-only">
-                this link takes you to my youtube channel
-            </span><i
-                    class="fa-brands fa-youtube"></i></a>
-        </section>
-        <!-- this was copied from https://www.cssscript.com/onscreen-joystick/#:~:text=Description%3A-,JoyStick.,for%20your%20game%20web%20app with Author bobbotech -->
-        <div id="joyDiv" style="width:200px;height:200px;margin-bottom:0px;margin:auto"></div>
+      </div>
+      <div id="rules-screen">
+        <div class="img-wrap">
+          <div class="bubble bubble-rules">
+            <p id="rules-text">
+              
+            </p>
+          </div>
+          <div id="hades-rules">
+            <button id="understand-start-game" class="button-34">
+              I understand the Rules lets play!
+            </button>
+          </div>
+          <img
+            src="assets/images/hadesgamerules.png"
+            alt=""
+            class="hades-rules"
+          />
+        </div>
+      </div>
     </div>
-    <script src="https://kit.fontawesome.com/28d7ca0192.js" crossorigin="anonymous"></script>
+    <div class="bg game-area">
+      <h1 class="game-name">Hades Snake Game</h1>
+      <section class="flex main-game-area">
+        <div class="button-wrap order-1">
+          <button id="restart" class="button-34">Restart</button>
+        </div>
+        <canvas
+          id="underworld-bg"
+          class="order-2"
+          height="500"
+          width="500"
+        ></canvas>
+        <div id="scores" class="order-3">
+          <h2>Score: <span class="current-score">00</span></h2>
+          <h2>Highest Score: <span class="highest-score">00</span></h2>
+        </div>
+      </section>
+      <section id="social-links" class="socials">
+        <a
+          href="https://www.instagram.com/mk_kefalas/"
+          rel="noopener"
+          target="_blank"
+          ><span class="sr-only">
+            this link takes you to my instagram page </span
+          ><i class="fa-brands fa-instagram"></i
+        ></a>
+        <a href="https://dribbble.com/MKefalas" rel="noopener" target="_blank"
+          ><span class="sr-only"> this link takes you to my dribble page </span
+          ><i class="fa-brands fa-dribbble"></i
+        ></a>
+        <a href="https://github.com/Frangelicomk" rel="noopener" target="_blank"
+          ><span class="sr-only"> this link takes you to my github page </span
+          ><i class="fa-brands fa-github"></i
+        ></a>
+        <a
+          href="https://www.youtube.com/channel/UCk8uhVNXee2_r2m-JNvd2mA"
+          target="_blank"
+          rel="noopener"
+          ><span class="sr-only">
+            this link takes you to my youtube channel </span
+          ><i class="fa-brands fa-youtube"></i
+        ></a>
+      </section>
+      <!-- this was copied from https://www.cssscript.com/onscreen-joystick/#:~:text=Description%3A-,JoyStick.,for%20your%20game%20web%20app with Author bobbotech -->
+      <div
+        id="joyDiv"
+        style="width: 200px; height: 200px; margin-bottom: 0px; margin: auto"
+      ></div>
+    </div>
+    <script
+      src="https://kit.fontawesome.com/28d7ca0192.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="assets/js/loadingmenu.js"></script>
     <script src="assets/js/snakegame.js"></script>
     <script src="assets/js/socials.js"></script>
-</body>
-
+  </body>
 </html>
