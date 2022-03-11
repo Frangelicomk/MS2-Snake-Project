@@ -1,16 +1,24 @@
-.main-menu {
-  display: block;
+
+.dialogue, #rules-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  
 }
 
-#rules-screen {
-  display: none;
+#submitName{
+  padding: .45rem;
+
 }
 
-.hades-intro, .hades-rules {
-  position: absolute;
-  z-index: 2;
-  left: 18%;
-  top: 16%;
+.hades-intro, .rules-img{
+  max-width: 700px;
+  width: 90%;
   animation-name: floating;
   animation-duration: 3s;
   animation-iteration-count: infinite;
@@ -21,16 +29,6 @@
   display: none;
 }
 
-
-
-.dialogue {
-  text-align: center;
-  position: relative;
-  width: 100%;
-  height: 100%;
-  
-}
-
 #text {
   overflow: hidden;
   padding: 0;
@@ -38,7 +36,6 @@
 }
 
 .bubble {
-  position: absolute;
   border: 2px solid #ffffff;
   background: transparent;
   color: #ffffff;
@@ -46,12 +43,11 @@
   font-size: 20px;
   line-height: 2rem;
   text-align: center;
-  width: 400px;
+  max-width: 400px;
+  width: 90%;
   word-break: break-word;
   border-radius: 10px;
   padding: 10px;
-  left: 45%;
-  top: 15%;
   z-index: 5;
   animation-name: floating;
   animation-duration: 3s;
@@ -73,16 +69,10 @@
   margin-left: -20px;
 }
 
-.menu-buttons {
-  position: absolute;
-  top: 30%;
-  left: 52%;
-  z-index: 8;
-}
-
-.menu-buttons button{
-  display: block;
-  margin-bottom: 2rem;
+.menu-buttons button {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
   animation-name: floating;
   animation-duration: 3s;
   animation-iteration-count: infinite;
@@ -90,20 +80,18 @@
 }
 
 #understand-start-game {
-  position: absolute;
-  top: 45%;
-  left: 49%;
+  margin-top: 2rem;
+  padding: 0.45rem;
+  visibility: hidden;
   animation-name: floating;
   animation-duration: 3s;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
-  visibility: hidden;
 }
 
-#hades-menu{
+#hades-menu {
   visibility: hidden;
 }
-
 
 @keyframes floating {
   0% {

@@ -26,7 +26,7 @@ html {
   -moz-background-size: cover;
   -webkit-background-size: cover;
   height: 100%;
-  /* overflow: hidden; */
+
 }
 
 .bg {
@@ -87,17 +87,14 @@ a {
   box-shadow: #5e5df0 0 10px 20px -10px;
   box-sizing: border-box;
   color: rgba(255, 255, 255, 1);
-  cursor: pointer;
-  font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji",
-    NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji",
-    EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue",
-    "Noto Sans", sans-serif;
-  font-size: 16px;
-  font-weight: 700;
+  font-family: "Amatic SC", cursive, sans-serif;
+  font-size: 30px;
+  font-weight: 500;
   line-height: 24px;
+  letter-spacing: 3px;
   opacity: 1;
   outline: 0 solid transparent;
-  padding: 8px 18px;
+  padding: 8px 2rem;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
@@ -110,7 +107,7 @@ a {
 
 #restart{
   transform: rotate(-90deg);
-
+margin-left: -85px;
 }
 
 .button-34:hover {
@@ -164,7 +161,7 @@ a {
     margin: 0px;
   }
 
-  .button-34 {
+  #restart {
     transform: rotate(0deg);
     margin: 0px;
   }

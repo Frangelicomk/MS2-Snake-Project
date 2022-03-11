@@ -66,26 +66,28 @@
 
     <div class="main-menu">
       <div class="dialogue">
+        <div class="bubble">
+          <p id="text"></p>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            maxlength="10"
+            value=""
+            placeholder="Enter your Name"
+            aria-required="true"
+            aria-invalid="false"
+          />
+          <button type="button" class="button-34" id="submitName">
+            Declare your name to Hades
+          </button>
+          <p class="error"></p>
+        </div>
+        <div id="hades-menu" class="menu-buttons">
+          <button id="start-game" class="button-34">START THE GAME</button>
+          <button id="read-rules" class="button-34">READ THE RULES</button>
+        </div>
         <div class="img-wrap">
-          <div class="bubble">
-            <p id="text"></p>
-            <input
-              type="text"
-              name="username"
-              id="username"
-              maxlength="10"
-              value=""
-              placeholder="Enter your Name"
-              aria-required="true" aria-invalid="false"/>
-            <button type="button" id="submitName">
-              Declare your name to Hades
-            </button>
-            <p class="error"></p>
-          </div>
-          <div id="hades-menu" class="menu-buttons">
-            <button id="start-game" class="button-34">START THE GAME</button>
-            <button id="read-rules" class="button-34">READ THE RULES</button>
-          </div>
           <img
             src="assets/images/hadeswelcomeintro.png"
             alt=""
@@ -94,24 +96,23 @@
         </div>
       </div>
       <div id="rules-screen">
+          <div class="bubble">
+              <p id="rules-text"></p>
+            </div>
+            <div id="hades-rules">
+                <button id="understand-start-game" class="button-34">
+                    I understand the Rules lets play!
+                </button>
+            </div>
         <div class="img-wrap">
-          <div class="bubble bubble-rules">
-            <p id="rules-text">
-              
-            </p>
-          </div>
-          <div id="hades-rules">
-            <button id="understand-start-game" class="button-34">
-              I understand the Rules lets play!
-            </button>
-          </div>
           <img
             src="assets/images/hadesgamerules.png"
             alt=""
-            class="hades-rules"
+            class="rules-img"
           />
         </div>
       </div>
+    </div>
     </div>
     <div class="bg game-area">
       <h1 class="game-name">Hades Snake Game</h1>

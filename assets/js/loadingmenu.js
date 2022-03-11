@@ -44,8 +44,8 @@ function getUserNameFromInput(){
 
   if(userName.match(/^[A-Za-z]+$/) ){ // only let you submit a username that includes ONLY letters. found this on ww3resource.com
     document.getElementsByClassName("error")[0].style.display = "none";
-    document.getElementById("submitName").style.visibility = "hidden";
-    document.getElementById("username").style.visibility = "hidden";
+    document.getElementById("submitName").style.display = "none";
+    document.getElementById("username").style.display = "none";
     txt = `Welcome to the Underworld ${userName}, please get familiar with the rules down here!`;
     typeWriter();
   }
@@ -65,7 +65,7 @@ function startGame(){
 
 function openRules(){
   rulesArea = document.getElementById('rules-screen');
-  rulesArea.style.display = 'block';
+  rulesArea.style.display = 'flex';
   loadingMenu = document.getElementsByClassName('dialogue')[0];
   loadingMenu.style.display = 'none';
 }
