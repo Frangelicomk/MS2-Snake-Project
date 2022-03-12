@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 let i = 0;
 let userName = '';
 let txt;

@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 const canvas = document.getElementById("underworld-bg");
 let ctx = canvas.getContext("2d");
 let tileNumber = 20;
