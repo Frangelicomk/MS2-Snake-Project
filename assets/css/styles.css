@@ -60,10 +60,15 @@ a {
   text-align: center;
 }
 
-#restart{
-  transform: rotate(-90deg);
+#restart, #back-to-rules{
+  display: inline-block;
+  margin-right: -35px;
   margin-left: -85px;
-
+  -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
 }
 
 
@@ -77,8 +82,8 @@ a {
 }
 
 .main-game-area {
-  margin: 0px;
-  padding: 0px;
+  /* margin: 0px;
+  padding: 0px; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -165,13 +170,17 @@ a {
     margin: 0px;
   }
 
-  #restart{
+  #restart, #back-to-rules{
     transform: rotate(0deg);
     margin: 0px;
   }
 
+  #back-to-rules{
+    margin-left: 100px;
+  }
   .button-wrap {
     padding: 1rem;
+    
   }
 
   .order-1 {
@@ -189,6 +198,13 @@ a {
   #scores > h2 {
     font-size: 2rem;
   }
+  #back-to-rules{
+    margin-left: 50px;
+  }
+
+  #back-to-rules, #restart {
+    padding: 0.55rem;
+  }
 }
 
 @media only screen and (max-width: 450px) {
@@ -204,6 +220,14 @@ a {
     font-size: 1.5rem;
     padding: 0.25rem 1rem;
   }
+  #back-to-rules{
+    margin-left: 30px;
+  }
+
+  #back-to-rules, #restart {
+    font-size: 1.25rem;
+    padding: 0.42rem;
+  }
 
   .button-wrap {
     padding: 0.5rem;
@@ -213,5 +237,13 @@ a {
 @media only screen and (max-width: 285px) {
   #scores > h2 {
     font-size: 1.5rem;
+  }
+  #back-to-rules{
+    margin-left: 8px;
+  }
+
+  #back-to-rules, #restart {
+    font-size: 1.25rem;
+    padding: 0.42rem;
   }
 }
