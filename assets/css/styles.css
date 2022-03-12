@@ -61,14 +61,13 @@ a {
 }
 
 #restart, #back-to-rules{
-  display: inline-block;
-  margin-right: -35px;
-  margin-left: -85px;
+  margin-right: -20px;
+  margin-left: -118px;
   -webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
     -ms-transform: rotate(-90deg);
     -o-transform: rotate(-90deg);
-    transform: rotate(-90deg);
+    transform: translateX(64px) rotate(-90deg);
 }
 
 
