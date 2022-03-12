@@ -51,16 +51,16 @@ function getUserNameFromInput(){
   }
   else{
     document.getElementsByClassName("error")[0].style.display = "block";
-    document.getElementsByClassName("error")[0].innerHTML = "Declare your Name Human!"
+    document.getElementsByClassName("error")[0].innerHTML = "Declare your Name Human!";
   }
 
 }
 
 function startGame(){
-  gameArea = document.getElementsByClassName('bg')[0];
-  gameArea.style.display = 'block';
   loadingMenu = document.getElementsByClassName('main-menu')[0];
   loadingMenu.style.display = 'none';
+  gameArea = document.getElementsByClassName('bg')[0];
+  gameArea.style.display = 'block';
 }
 
 function openRules(){
@@ -68,6 +68,16 @@ function openRules(){
   rulesArea.style.display = 'flex';
   loadingMenu = document.getElementsByClassName('dialogue')[0];
   loadingMenu.style.display = 'none';
+}
+
+function backToRules() {
+  gameArea = document.getElementsByClassName('bg')[0];
+  gameArea.style.display = 'none';
+  rulesArea = document.getElementById('rules-screen');
+  rulesArea.style.display = 'flex';
+  loadingMenu = document.getElementsByClassName('main-menu')[0];
+  loadingMenu.style.display = 'block';
+
 }
 
 function submitName(event) {
@@ -85,15 +95,19 @@ document.getElementById("submitName").onclick = function () {
 
 document.getElementById('understand-start-game').onclick = function () {
   startGame();
-}
+};
 
 document.getElementById('start-game').onclick = function () {
   startGame();
-}
+};
+
 
 document.getElementById('read-rules').onclick = function () {
-  openRules()
+  openRules();
   setTimeout(typeRulesWriter, 1000);
-}
+};
 
+document.getElementById('back-to-rules').onclick = function() {
+  backToRules();
+};
 
