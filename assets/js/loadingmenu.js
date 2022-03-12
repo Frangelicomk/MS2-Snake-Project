@@ -1,11 +1,6 @@
 let i = 0;
-let userName = "";
+let userName = '';
 let txt;
-let rulesText = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
-perspiciatis eius debitis eos impedit harum repellendus
-reprehenderit aperiam dolore pariatur necessitatibus quia odio
-voluptatem rem magni aliquam fugit quaerat, optio cupiditate quis
-commodi dolor consequatur maxime. Vitae itaque iste ducimus?`;
 /* The text */
 let speed = 50; /* The speed/duration of the effect in milliseconds */
 
@@ -22,10 +17,15 @@ function typeWriter() {
 }
 
 function typeRulesWriter() {
+  let rulesText = `${userName}, unfortunately you ended up in the Underworld. Where you have taken the form of a soul harvest snake. Consume as many souls as you can
+  to avoid me claiming your soul. The rules to survive are quite simple. Use your keyboards arrow keys to control
+  the snake. Eat souls that spawn in different positions every time you consume them. Be aware that if you touch any part of
+  the snake tail it is GAME OVER for you and I will claim your soul for Eternity. Your score will be based on how many souls you 
+  consume. Every time you consume a soul your tail gets bigger. For each 6 souls the snake moves faster, when you reach a score of 150 then the fun will start `;
   if (i < rulesText.length) {
     document.getElementById("rules-text").innerHTML += rulesText.charAt(i);
     i++;
-    setTimeout(typeRulesWriter, speed/5);
+    setTimeout(typeRulesWriter, speed/3);
   }
   else{
     document.getElementById('understand-start-game').style.visibility = 'visible';
@@ -104,7 +104,7 @@ document.getElementById('start-game').onclick = function () {
 
 document.getElementById('read-rules').onclick = function () {
   openRules();
-  setTimeout(typeRulesWriter, 1000);
+  setTimeout(typeRulesWriter, 800);
 };
 
 document.getElementById('back-to-rules').onclick = function() {
