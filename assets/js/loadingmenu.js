@@ -50,6 +50,7 @@ function getUserNameFromInput(){
     document.getElementById("username").style.display = "none";
     txt = `Welcome to the Underworld ${userName}, please get familiar with the rules down here!`;
     typeWriter();
+    buttonPressed = true;
   }
   else{
     document.getElementsByClassName("error")[0].style.display = "block";
@@ -90,7 +91,6 @@ function submitName(event) {
 
   if (event.keyCode == 13 && !buttonPressed) {
     getUserNameFromInput();
-    buttonPressed = true;
   }
 }
 
