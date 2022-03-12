@@ -60,15 +60,19 @@ function getUserNameFromInput(){
 function startGame(){
   loadingMenu = document.getElementsByClassName('main-menu')[0];
   loadingMenu.style.display = 'none';
+  rulesArea = document.getElementById('rules-screen');
+  rulesArea.style.display = 'none';
   gameArea = document.getElementsByClassName('bg')[0];
   gameArea.style.display = 'block';
 }
 
 function openRules(){
-  rulesArea = document.getElementById('rules-screen');
-  rulesArea.style.display = 'flex';
   loadingMenu = document.getElementsByClassName('dialogue')[0];
   loadingMenu.style.display = 'none';
+  gameArea = document.getElementsByClassName('bg')[0];
+  gameArea.style.display = 'none';
+  rulesArea = document.getElementById('rules-screen');
+  rulesArea.style.display = 'flex';
 }
 
 function backToRules() {
@@ -99,6 +103,7 @@ document.getElementById('understand-start-game').onclick = function () {
 };
 
 document.getElementById('start-game').onclick = function () {
+  // openRules();
   startGame();
 };
 
