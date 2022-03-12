@@ -69,7 +69,7 @@
   margin-left: -20px;
 }
 
-.menu-buttons button {
+.menu-buttons > button {
   display: flex;
   flex-direction: column;
   margin-top: 2rem;
@@ -91,6 +91,10 @@
 
 #hades-menu {
   visibility: hidden;
+}
+
+#rules-screen {
+  display: none;
 }
 
 @keyframes floating {
