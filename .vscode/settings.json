@@ -23,7 +23,6 @@
    "files.autoSave": "off",
    "workbench.colorTheme": "Dracula",
    "terminal.integrated.gpuAcceleration": "canvas",
-   "editor.defaultFormatter": "HookyQR.beautify",
    "[javascript]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode"
    },

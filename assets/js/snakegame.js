@@ -6,7 +6,7 @@ let tileSize = canvas.width / tileNumber;
 let gameSpeed; // this is the speed the game goes.
 let snakeTailLength = 2; // initial length of the snake
 let snakeTail; // snake positions
-let snakeSpeed;
+let snakeDirection;
 let snakeFoodPosition;
 let removeTail = true;
 let gameStart;
@@ -18,6 +18,10 @@ let joy;
 let r = 0;
 let g = 0;
 let b = 0;
+let isFirstMove = true;
+let lastSnakeDirection = -1;
+let prevSnakeDirection = -1;
+let directions = {3: {x:-1, y:0},0: {x:0, y:-1},1: {x:1, y:0},2: {x:0, y:1}, "-1":{x:0,y:0}};
 
 const upAudio = document.getElementById("upAudio"); 
 const downAudio = document.getElementById("downAudio"); 
@@ -173,8 +177,8 @@ function snakePosition(newHeadSnake) {
 function drawSnake() {
   // update position of the snake head
   let newHeadSnake = {
-    x: snakeTail[snakeTail.length - 1].x + snakeSpeed.x,
-    y: snakeTail[snakeTail.length - 1].y + snakeSpeed.y,
+    x: snakeTail[snakeTail.length - 1].x + directions[snakeDirection].x,
+    y: snakeTail[snakeTail.length - 1].y + directions[snakeDirection].y,
   };
 
   snakePosition(newHeadSnake);
@@ -211,30 +215,40 @@ function drawSnake() {
 
 document.addEventListener("keydown", keyEventPress);
 
+// Directions
+//     0
+//   3   1
+//     2
 // This function controls the movement of the snake
 function keyEventPress(e) {
 
-    // keyboard control
-  if (e.keyCode === 37) {
-    if (snakeSpeed.x !== 1) {
-      snakeSpeed = { x: -1, y: 0 };
-      leftAudio.play(); 
-    } else console.log("Error, you can not go  left while going right");
-  } else if (e.keyCode === 38) {
-    if (snakeSpeed.y !== 1) {
-      snakeSpeed = { x: 0, y: -1 };
-      upAudio.play(); 
-    } else console.log("Error, you can not go up while going down");
-  } else if (e.keyCode === 39) {
-    if (snakeSpeed.x !== -1) {
-      snakeSpeed = { x: 1, y: 0 };
-      rightAudio.play(); 
-    } else console.log("Error, you can not go right while going left");
-  } else if (e.keyCode === 40) {
-    if (snakeSpeed.y !== -1) {
-      snakeSpeed = { x: 0, y: 1 };
-      downAudio.play(); 
-    } else console.log("Error, you can not go down while going up");
+  isFirstMove = false;
+
+  switch(e.keyCode){
+    case 37 :
+      if(snakeDirection != 1){
+        snakeDirection = 3;
+        leftAudio.play();
+      }
+      break;
+    case 38:
+      if(snakeDirection != 2){
+        snakeDirection = 0;
+        leftAudio.play();
+      }
+      break;
+    case 39:
+      if(snakeDirection != 3){
+        snakeDirection = 1;
+        leftAudio.play(); 
+      }
+      break;
+    case 40:
+      if(snakeDirection != 0){
+        snakeDirection = 2;
+        leftAudio.play();
+      }
+      break;
   }
 
   if (
@@ -252,30 +266,35 @@ function joystickPlay(){
     if(isMobile){
         var x = joy.GetX();
         var y = joy.GetY();
-        let sensitivity = 80;
-    
-        if (x <= -sensitivity && x >= -100 ) {
-            if (snakeSpeed.x !== 1) {
-                snakeSpeed = { x: -1, y: 0 };
-                leftAudio.play(); 
-            }
-        } else if (y >= sensitivity && y <= 100) {
-            if (snakeSpeed.y !== 1) {
-                snakeSpeed = { x: 0, y: -1 };
-                upAudio.play(); 
-            }
-        } else if (x >= sensitivity && x <= 100) {
-            if (snakeSpeed.x !== -1) {
-                snakeSpeed = { x: 1, y: 0 };
-                rightAudio.play(); 
-            }
-        } else if (y <= -sensitivity && y >= -100) {
-            if (snakeSpeed.y !== -1) {
-                snakeSpeed = { x: 0, y: 1 };
-                downAudio.play(); 
-            }
-        }
-    
+        let sensitivity = 30;
+
+          switch(true){
+    case (x <= -sensitivity && x >= -100) :
+      if(snakeDirection != 1){
+        snakeDirection = 3;
+        leftAudio.play();
+      }
+      break;
+    case (y >= sensitivity && y <= 100):
+      if(snakeDirection != 2){
+        snakeDirection = 0;
+        leftAudio.play();
+      }
+      break;
+    case (x >= sensitivity && x <= 100):
+      if(snakeDirection != 3){
+        snakeDirection = 1;
+        leftAudio.play(); 
+      }
+      break;
+    case (y <= -sensitivity && y >= -100):
+      if(snakeDirection != 0){
+        snakeDirection = 2;
+        leftAudio.play();
+      }
+      break;
+  }
+
         if (
             x <= -sensitivity && x >= -100 ||
             y >= sensitivity && y <= 100 ||
@@ -291,8 +310,8 @@ function joystickPlay(){
 // This function will make the snake eat the food and also check if GAME OVER due to collision with tail
 function checkCollision() {
   let newHeadSnake = {
-    x: snakeTail[snakeTail.length - 1].x + snakeSpeed.x,
-    y: snakeTail[snakeTail.length - 1].y + snakeSpeed.y,
+    x: snakeTail[snakeTail.length - 1].x + directions[snakeDirection].x,
+    y: snakeTail[snakeTail.length - 1].y + directions[snakeDirection].y,
   };
 
   // checks if snake goes outside of the grid
@@ -332,7 +351,8 @@ function resetGame() {
   gameStart = false; // game is paused
   snakeTail = []; // reset snake
   gameSpeed = 7;
-  snakeSpeed = { x: 0, y: 0 }; // initialize snake speed
+  snakeDirection = -1; // initialize snake speed
+  prevSnakeDirection = -1;
   score = 0;
 
   for (let i = 0; i < snakeTailLength; i++) {
@@ -426,6 +446,7 @@ document.getElementById("restart").onclick = function(){
 function underworldSnakeGame() {
   if (!gameIsLost) {
     removeTail = true;
+    isFirstMove = true;
     joystickPlay()
     clearScreen();
     checkCollision();
