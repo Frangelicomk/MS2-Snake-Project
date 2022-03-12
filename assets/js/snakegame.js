@@ -236,19 +236,19 @@ function keyEventPress(e) {
     case 38:
       if (snakeDirection != 2) {
         snakeDirection = 0;
-        leftAudio.play();
+        upAudio.play();
       }
       break;
     case 39:
       if (snakeDirection != 3) {
         snakeDirection = 1;
-        leftAudio.play();
+        rightAudio.play();
       }
       break;
     case 40:
       if (snakeDirection != 0) {
         snakeDirection = 2;
-        leftAudio.play();
+        downAudio.play();
       }
       break;
   }
@@ -279,19 +279,19 @@ function joystickPlay() {
       case y >= sensitivity && y <= 100:
         if (snakeDirection != 2) {
           snakeDirection = 0;
-          leftAudio.play();
+          upAudio.play();
         }
         break;
       case x >= sensitivity && x <= 100:
         if (snakeDirection != 3) {
           snakeDirection = 1;
-          leftAudio.play();
+          rightAudio.play();
         }
         break;
       case y <= -sensitivity && y >= -100:
         if (snakeDirection != 0) {
           snakeDirection = 2;
-          leftAudio.play();
+          downAudio.play();
         }
         break;
     }
