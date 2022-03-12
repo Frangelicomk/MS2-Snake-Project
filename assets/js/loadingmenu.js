@@ -4,6 +4,7 @@ let userName = '';
 let txt;
 /* The text */
 let speed = 50; /* The speed/duration of the effect in milliseconds */
+let buttonPressed = false;
 
 function typeWriter() {
   if (i < txt.length) {
@@ -87,8 +88,9 @@ function backToRules() {
 
 function submitName(event) {
 
-  if (event.keyCode == 13) {
+  if (event.keyCode == 13 && !buttonPressed) {
     getUserNameFromInput();
+    buttonPressed = true;
   }
 }
 
@@ -96,6 +98,7 @@ document.addEventListener("keydown", submitName, false);
 
 document.getElementById("submitName").onclick = function () {
   getUserNameFromInput();
+
 };
 
 document.getElementById('understand-start-game').onclick = function () {

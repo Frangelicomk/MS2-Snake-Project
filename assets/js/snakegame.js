@@ -379,6 +379,7 @@ function spawnFood(newHeadSnake) {
 
     randomFoodRGB();
 
+    
     for (let t = 0; t < snakeTail.length; t++) {
       let tile = snakeTail[t];
       // if food is in a tile which the snake occupies
