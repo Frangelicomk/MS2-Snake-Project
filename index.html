@@ -34,11 +34,11 @@
     <link rel="manifest" href="assets/favicon/site.webmanifest" />
     <link rel="stylesheet" href="assets/css/styles.css" type="text/css" />
     <link rel="stylesheet" href="assets/css/mainMenu.css" type="text/css" />
-    <link rel="stylesheet" href="assets/css/settings.css" type="text/css" />
     <script src="assets/js/joy.js"></script>
   </head>
 
   <body>
+    <!-- Audio to be loaded with Javascript, here we store the audio for the game. -->
     <audio id="upAudio">
       <source src="assets/audio/ogg/audio_up.ogg" type="audio/ogg" />
       <source src="assets/audio/audio_up.mp3" type="audio/mpeg" />
@@ -64,6 +64,7 @@
       <source src="assets/audio/ogg/audio_dead.ogg" type="audio/ogg" />
       <source src="assets/audio/audio_dead.mp3" type="audio/mpeg" />
     </audio>
+    <!-- loading screen and rules screen sections -->
     <div class="main-menu">
       <div class="dialogue">
         <div class="bubble">
@@ -73,14 +74,13 @@
             name="username"
             id="username"
             maxlength="10"
-            value=""
-            placeholder="Enter your Name"
+            placeholder="Do what the button says"
             aria-required="true"
             aria-invalid="false"
             autocomplete="off"
           />
           <button type="button" class="button-34" id="submitName">
-            Declare your name to Hades
+            Declare your name to Hades!
           </button>
           <p class="error"></p>
         </div>
@@ -91,7 +91,7 @@
         <div class="img-wrap">
           <img
             src="assets/images/hadeswelcomeintro.png"
-            alt=""
+            alt="this is hades from disney welcoming the user.This photo is a screenshot from the actual disney hercules movie"
             class="hades-intro"
           />
         </div>
@@ -108,7 +108,7 @@
         <div class="img-wrap">
           <img
             src="assets/images/hadesgamerules.png"
-            alt=""
+            alt="this is hades from disney explaining the rules of the game to the user.This photo is a screenshot from the actual disney hercules movie"
             class="rules-img"
           />
         </div>
@@ -168,7 +168,6 @@
       src="https://kit.fontawesome.com/28d7ca0192.js"
       crossorigin="anonymous"
     ></script>
-    <script src="assets/js/settings.js"></script>
     <script src="assets/js/loadingmenu.js"></script>
     <script src="assets/js/snakegame.js"></script>
     <script src="assets/js/socials.js"></script>
