@@ -19,8 +19,6 @@ let r = 0;
 let g = 0;
 let b = 0;
 let isFirstMove = true;
-let lastSnakeDirection = -1;
-let prevSnakeDirection = -1;
 let directions = {
   3: { x: -1, y: 0 },
   0: { x: 0, y: -1 },
@@ -269,7 +267,7 @@ function joystickPlay() {
   if (isMobile) {
     var x = joy.GetX();
     var y = joy.GetY();
-    let sensitivity = 30;
+    let sensitivity = 5;
 
     switch (true) {
       case x <= -sensitivity && x >= -100:
