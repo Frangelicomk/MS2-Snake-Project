@@ -62,6 +62,7 @@ a {
 
 #restart{
   transform: rotate(-90deg);
+  margin-left: -85px;
 
 }
 
@@ -108,7 +109,7 @@ a {
   width: fit-content;
   word-break: break-word;
   border: 0;
-  margin-left: -85px;
+  
 }
 
 
