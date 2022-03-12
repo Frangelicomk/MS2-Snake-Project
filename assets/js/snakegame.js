@@ -267,7 +267,7 @@ function joystickPlay() {
   if (isMobile) {
     var x = joy.GetX();
     var y = joy.GetY();
-    let sensitivity = 5;
+    let sensitivity = 95;
 
     switch (true) {
       case x <= -sensitivity && x >= -100:
