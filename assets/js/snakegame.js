@@ -21,42 +21,53 @@ let b = 0;
 let isFirstMove = true;
 let lastSnakeDirection = -1;
 let prevSnakeDirection = -1;
-let directions = {3: {x:-1, y:0},0: {x:0, y:-1},1: {x:1, y:0},2: {x:0, y:1}, "-1":{x:0,y:0}};
+let directions = {
+  3: { x: -1, y: 0 },
+  0: { x: 0, y: -1 },
+  1: { x: 1, y: 0 },
+  2: { x: 0, y: 1 },
+  "-1": { x: 0, y: 0 },
+};
 
-const upAudio = document.getElementById("upAudio"); 
-const downAudio = document.getElementById("downAudio"); 
-const leftAudio = document.getElementById("leftAudio"); 
-const rightAudio = document.getElementById("rightAudio"); 
-const eatFoodAudio = document.getElementById("eatFoodAudio"); 
-const dieAudio = document.getElementById("dieAudio"); 
+const upAudio = document.getElementById("upAudio");
+const downAudio = document.getElementById("downAudio");
+const leftAudio = document.getElementById("leftAudio");
+const rightAudio = document.getElementById("rightAudio");
+const eatFoodAudio = document.getElementById("eatFoodAudio");
+const dieAudio = document.getElementById("dieAudio");
 
-if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768){
-    isMobile = true;
+if (
+  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent
+  ) ||
+  window.innerWidth < 768
+) {
+  isMobile = true;
 }
 
-if(isMobile){
-    document.getElementById("joyDiv").style.display = "block"
-    // this was copied from https://www.cssscript.com/onscreen-joystick/#:~:text=Description%3A-,JoyStick.,for%20your%20game%20web%20app with Author bobbotech
-     // loads the joystick 
-    joy = new JoyStick('joyDiv',{
-      // The ID of canvas element
-      title: 'joystick',
-      // width/height
-      width: undefined,
-      height: undefined,
-      // Internal color of Stick
-      internalFillColor: 'rgba(255,255,255,1 )',
-      // Border width of Stick
-      internalLineWidth: 2,
-      // Border color of Stick
-      internalStrokeColor: 'rgba(255,255,255,1 )',
-      // External reference circonference width
-      externalLineWidth: 2,
-      //External reference circonference color
-      externalStrokeColor: 'rgba(255,255,255,1 )',
-      // Sets the behavior of the stick
-      autoReturnToCenter: true
-    });
+if (isMobile) {
+  document.getElementById("joyDiv").style.display = "block";
+  // this was copied from https://www.cssscript.com/onscreen-joystick/#:~:text=Description%3A-,JoyStick.,for%20your%20game%20web%20app with Author bobbotech
+  // loads the joystick
+  joy = new JoyStick("joyDiv", {
+    // The ID of canvas element
+    title: "joystick",
+    // width/height
+    width: undefined,
+    height: undefined,
+    // Internal color of Stick
+    internalFillColor: "rgba(255,255,255,1 )",
+    // Border width of Stick
+    internalLineWidth: 2,
+    // Border color of Stick
+    internalStrokeColor: "rgba(255,255,255,1 )",
+    // External reference circonference width
+    externalLineWidth: 2,
+    //External reference circonference color
+    externalStrokeColor: "rgba(255,255,255,1 )",
+    // Sets the behavior of the stick
+    autoReturnToCenter: true,
+  });
 }
 
 /**
@@ -84,21 +95,20 @@ window.addEventListener(
 );
 
 function resizeCanvasResponsive() {
-    if (window.innerHeight < 725) {
-        canvas.width = window.innerHeight - 225;
-        canvas.height = window.innerHeight - 225;
-    }
-    if (window.innerWidth < 565) {
-        canvas.width = window.innerWidth - 65;
-        canvas.height = window.innerWidth - 65;
-    }
+  if (window.innerHeight < 725) {
+    canvas.width = window.innerHeight - 225;
+    canvas.height = window.innerHeight - 225;
+  }
+  if (window.innerWidth < 565) {
+    canvas.width = window.innerWidth - 65;
+    canvas.height = window.innerWidth - 65;
+  }
 
-    if (window.innerWidth >= 550 && window.innerHeight >= 725) {
-        canvas.width = 500;
-        canvas.height = 500;
-        
-    }
-    tileSize = canvas.width / tileNumber;
+  if (window.innerWidth >= 550 && window.innerHeight >= 725) {
+    canvas.width = 500;
+    canvas.height = 500;
+  }
+  tileSize = canvas.width / tileNumber;
 }
 
 function clearScreen() {
@@ -124,31 +134,26 @@ function clearScreen() {
   }
 }
 
-function randomFoodRGB(){
-    let baseColors = ['r', 'g', 'b'];
-    let baseColor = baseColors[Math.floor(Math.random()*3)];
-    if(baseColor == 'r'){
-        r = 255;
-        g = Math.floor(Math.random()*250); // fruid red value
-        b = Math.floor(Math.random()*80); // fruit green value
-    }
-    else if(baseColor == 'g'){
-        r = Math.floor(Math.random()*80); // fruid red value
-        g = 255;
-        b = Math.floor(Math.random()*80); // fruit green value
-    }
-    else if(baseColor == 'b'){
-        r = Math.floor(Math.random()*80); // fruid red value
-        g = Math.floor(Math.random()*80); // fruit green value
-        b = 255;
-    }
-
-
+function randomFoodRGB() {
+  let baseColors = ["r", "g", "b"];
+  let baseColor = baseColors[Math.floor(Math.random() * 3)];
+  if (baseColor == "r") {
+    r = 255;
+    g = Math.floor(Math.random() * 250); // fruid red value
+    b = Math.floor(Math.random() * 80); // fruit green value
+  } else if (baseColor == "g") {
+    r = Math.floor(Math.random() * 80); // fruid red value
+    g = 255;
+    b = Math.floor(Math.random() * 80); // fruit green value
+  } else if (baseColor == "b") {
+    r = Math.floor(Math.random() * 80); // fruid red value
+    g = Math.floor(Math.random() * 80); // fruit green value
+    b = 255;
+  }
 }
 
 // this function draws the food
 function drawFood() {
-    
   ctx.fillStyle = `rgb(${r}, ${g},${b})`;
   ctx.shadowBlur = 30;
   ctx.shadowColor = `rgba(${r},${g},${b},1 )`; // I got the design idea from https://codepen.io/fariati
@@ -170,7 +175,7 @@ function snakePosition(newHeadSnake) {
   if (newHeadSnake.y === tileNumber) {
     newHeadSnake.y = 0;
   } else if (newHeadSnake.y === -1) {
-    newHeadSnake.y = tileNumber - 1; 
+    newHeadSnake.y = tileNumber - 1;
   }
 }
 // this function draws the snake
@@ -221,30 +226,29 @@ document.addEventListener("keydown", keyEventPress);
 //     2
 // This function controls the movement of the snake
 function keyEventPress(e) {
-
   isFirstMove = false;
 
-  switch(e.keyCode){
-    case 37 :
-      if(snakeDirection != 1){
+  switch (e.keyCode) {
+    case 37:
+      if (snakeDirection != 1) {
         snakeDirection = 3;
         leftAudio.play();
       }
       break;
     case 38:
-      if(snakeDirection != 2){
+      if (snakeDirection != 2) {
         snakeDirection = 0;
         leftAudio.play();
       }
       break;
     case 39:
-      if(snakeDirection != 3){
+      if (snakeDirection != 3) {
         snakeDirection = 1;
-        leftAudio.play(); 
+        leftAudio.play();
       }
       break;
     case 40:
-      if(snakeDirection != 0){
+      if (snakeDirection != 0) {
         snakeDirection = 2;
         leftAudio.play();
       }
@@ -261,50 +265,48 @@ function keyEventPress(e) {
   }
 }
 
-function joystickPlay(){
-    
-    if(isMobile){
-        var x = joy.GetX();
-        var y = joy.GetY();
-        let sensitivity = 30;
+function joystickPlay() {
+  if (isMobile) {
+    var x = joy.GetX();
+    var y = joy.GetY();
+    let sensitivity = 30;
 
-          switch(true){
-    case (x <= -sensitivity && x >= -100) :
-      if(snakeDirection != 1){
-        snakeDirection = 3;
-        leftAudio.play();
-      }
-      break;
-    case (y >= sensitivity && y <= 100):
-      if(snakeDirection != 2){
-        snakeDirection = 0;
-        leftAudio.play();
-      }
-      break;
-    case (x >= sensitivity && x <= 100):
-      if(snakeDirection != 3){
-        snakeDirection = 1;
-        leftAudio.play(); 
-      }
-      break;
-    case (y <= -sensitivity && y >= -100):
-      if(snakeDirection != 0){
-        snakeDirection = 2;
-        leftAudio.play();
-      }
-      break;
-  }
-
-        if (
-            x <= -sensitivity && x >= -100 ||
-            y >= sensitivity && y <= 100 ||
-            x >= sensitivity && x <= 100 ||
-            y <= -sensitivity && y >= -100
-        ) {
-            gameStart = true;
+    switch (true) {
+      case x <= -sensitivity && x >= -100:
+        if (snakeDirection != 1) {
+          snakeDirection = 3;
+          leftAudio.play();
         }
+        break;
+      case y >= sensitivity && y <= 100:
+        if (snakeDirection != 2) {
+          snakeDirection = 0;
+          leftAudio.play();
+        }
+        break;
+      case x >= sensitivity && x <= 100:
+        if (snakeDirection != 3) {
+          snakeDirection = 1;
+          leftAudio.play();
+        }
+        break;
+      case y <= -sensitivity && y >= -100:
+        if (snakeDirection != 0) {
+          snakeDirection = 2;
+          leftAudio.play();
+        }
+        break;
     }
 
+    if (
+      (x <= -sensitivity && x >= -100) ||
+      (y >= sensitivity && y <= 100) ||
+      (x >= sensitivity && x <= 100) ||
+      (y <= -sensitivity && y >= -100)
+    ) {
+      gameStart = true;
+    }
+  }
 }
 
 // This function will make the snake eat the food and also check if GAME OVER due to collision with tail
@@ -421,33 +423,51 @@ function gameOver() {
   if (gameIsLost) {
     ctx.fillStyle = "#181825";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.shadowColor = 'rgba(0,0,0,1)';
-    ctx.font = `${(48/500)*canvas.width}px 'Amatic SC', cursive, sans-serif`;
+    ctx.shadowColor = "rgba(0,0,0,1)";
+    ctx.font = `${
+      (48 / 500) * canvas.width
+    }px 'Amatic SC', cursive, sans-serif`;
     ctx.fillStyle = "white";
     ctx.textAlign = "center";
-    ctx.fillText(`GAME OVER ${userName.toUpperCase()}`, canvas.width/2, canvas.height/4);
+    ctx.fillText(
+      `GAME OVER ${userName.toUpperCase()}`,
+      canvas.width / 2,
+      canvas.height / 4
+    );
 
-    ctx.font = `${(36/500)*canvas.width}px 'Amatic SC', cursive, sans-serif`;
+    ctx.font = `${
+      (36 / 500) * canvas.width
+    }px 'Amatic SC', cursive, sans-serif`;
     ctx.fillStyle = "white";
     ctx.textAlign = "center";
-    ctx.fillText(`Your Score: ${parseInt(score)}`, canvas.width/2, canvas.height/2.4);
+    ctx.fillText(
+      `Your Score: ${parseInt(score)}`,
+      canvas.width / 2,
+      canvas.height / 2.4
+    );
 
-    ctx.font = `${(36/500)*canvas.width}px 'Amatic SC', cursive, sans-serif`;
+    ctx.font = `${
+      (36 / 500) * canvas.width
+    }px 'Amatic SC', cursive, sans-serif`;
     ctx.fillStyle = "white";
     ctx.textAlign = "center";
-    ctx.fillText(`Your Highest Score was: ${parseInt(highScore)}`, canvas.width/2, canvas.height/2);
+    ctx.fillText(
+      `Your Highest Score was: ${parseInt(highScore)}`,
+      canvas.width / 2,
+      canvas.height / 2
+    );
   }
 }
 
-document.getElementById("restart").onclick = function(){
-    resetGame();
+document.getElementById("restart").onclick = function () {
+  resetGame();
 };
 
 function underworldSnakeGame() {
   if (!gameIsLost) {
     removeTail = true;
     isFirstMove = true;
-    joystickPlay()
+    joystickPlay();
     clearScreen();
     checkCollision();
     drawSnake();
@@ -459,7 +479,6 @@ function underworldSnakeGame() {
 
   setTimeout(underworldSnakeGame, 1000 / gameSpeed);
 }
-
 
 resetGame();
 underworldSnakeGame();
