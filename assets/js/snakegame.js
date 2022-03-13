@@ -362,7 +362,7 @@ function checkCollision() {
 
     eatFoodAudio.play();
 
-    // navigator.vibrate(200); // vibrate for 200ms
+    navigator.vibrate(200); // vibrate for 200ms
 
     removeTail = false; // don't remove tail to increase the snake by one block
   }
