@@ -329,7 +329,7 @@ function resetGame() {
   gameIsLost = false;
   gameStart = false; // game is paused
   snakeTail = []; // reset snake
-  gameSpeed = 10;
+  gameSpeed = 8;
   snakeDirection = -1; // initialize snake speed
   score = 0;
 
@@ -380,12 +380,12 @@ function updateScore() {
   score = parseInt(
     document.getElementsByClassName("current-score")[0].innerHTML
   );
-  score = score + 10; // increment score by 10
+  score = score + 5; // increment score by 10
 
   // speed up the snake as the score increases
   if (score % 60 == 0) {
     // increment every 6 times the snake eats food
-    if (score < 300) {
+    if (score < 150) {
       // increment the speed by one when score is less than 300
       gameSpeed++;
     } else {
