@@ -2,7 +2,6 @@
 let i = 0;
 let userName = '';
 let txt;
-/* The text */
 let speed = 50; /* The speed/duration of the effect in milliseconds */
 let buttonPressed = false;
 
@@ -17,7 +16,10 @@ function typeWriter() {
     showMenuButtons();
   }
 }
-
+/**
+ * This function creates the text for the rules when the user pressed the button READ THE RULES!
+ * When the USER reads the rules after a short delay the BUTTON for the GAME to start APPEARS.
+ */
 function typeRulesWriter() {
   let rulesText = `${userName}, unfortunately you ended up in the Underworld. Where you have taken the form of a soul harvest snake. Consume as many souls as you can
   to avoid me claiming your soul. The rules to survive are quite simple. Use your keyboards arrow keys to control
@@ -35,12 +37,17 @@ function typeRulesWriter() {
   
 }
 
-
+/**
+ * The following function makes the menu buttons visible.
+ */
 function showMenuButtons(){
   menuButtons = document.getElementById('hades-menu');
   menuButtons.style.visibility = 'visible';
 }
 
+/**
+ * The getUserNameFromInput function simply gets the value of the users input and also validates if the Name has only letters. No spaces allowed either.
+ */
 function getUserNameFromInput(){
   userName = document.getElementById("username").value;
 
@@ -59,6 +66,7 @@ function getUserNameFromInput(){
 
 }
 
+// what happens when user presses START GAME
 function startGame(){
   loadingMenu = document.getElementsByClassName('main-menu')[0];
   loadingMenu.style.display = 'none';
@@ -68,6 +76,7 @@ function startGame(){
   gameArea.style.display = 'block';
 }
 
+// what happens when user presses READ THE RULES
 function openRules(){
   loadingMenu = document.getElementsByClassName('dialogue')[0];
   loadingMenu.style.display = 'none';
@@ -77,6 +86,7 @@ function openRules(){
   rulesArea.style.display = 'flex';
 }
 
+// what happens wwhen user pressed the button READ THE RULES AGAIN
 function backToRules() {
   gameArea = document.getElementsByClassName('bg')[0];
   gameArea.style.display = 'none';
