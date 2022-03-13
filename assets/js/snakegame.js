@@ -302,9 +302,7 @@ function checkCollision() {
 
     eatFoodAudio.play();
 
-    if (navigator) {
-      navigator.vibrate(200); // vibrate for 200ms
-    }
+    navigator.vibrate(200); // vibrate for 200ms
 
     removeTail = false; // don't remove tail to increase the snake by one block
   }
@@ -316,9 +314,7 @@ function checkCollision() {
       if (tail.x == newHeadSnake.x && tail.y == newHeadSnake.y) {
         gameIsLost = true;
         dieAudio.play();
-        if (navigator) {
-          navigator.vibrate([300, 300]);
-        }
+        navigator.vibrate([300, 300]);
         break;
       }
     }
@@ -387,10 +383,13 @@ function updateScore() {
   score = score + 10; // increment score by 10
 
   // speed up the snake as the score increases
-  if (score % 60 == 0) { // increment every 6 times the snake eats food
-    if (score < 300) { // increment the speed by one when score is less than 300
+  if (score % 60 == 0) {
+    // increment every 6 times the snake eats food
+    if (score < 300) {
+      // increment the speed by one when score is less than 300
       gameSpeed++;
-    } else { // increment the speed by 3 when score > 300
+    } else {
+      // increment the speed by 3 when score > 300
       gameSpeed = gameSpeed + 3;
     }
   }
@@ -412,7 +411,6 @@ function updateHighScore() {
  */
 function gameOver() {
   if (gameIsLost) {
-
     // print in the canvas GAME OVER (user)
     ctx.fillStyle = "#181825";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -475,12 +473,7 @@ function underworldSnakeGame() {
 }
 
 /**The following 2 if statements are checking if the user opens the game in a mobile device and if so a joystick appears */
-if (
-  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-    navigator.userAgent
-  ) ||
-  window.innerWidth < 768
-) {
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 76) {
   isMobile = true;
 }
 
