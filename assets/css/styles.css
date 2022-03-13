@@ -23,9 +23,6 @@ html {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  -o-background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
   height: 100%;
 
 }
@@ -64,11 +61,7 @@ a {
 #restart, #back-to-rules{
   margin-right: -20px;
   margin-left: -118px;
-  -webkit-transform: rotate(-90deg);
-    -moz-transform: rotate(-90deg);
-    -ms-transform: rotate(-90deg);
-    -o-transform: rotate(-90deg);
-    transform: translateX(64px) rotate(-90deg);
+  transform: translateX(64px) rotate(-90deg);
 }
 
 
@@ -109,7 +102,6 @@ a {
   outline: 0 solid transparent;
   padding: 8px 2rem;
   user-select: none;
-  -webkit-user-select: none;
   touch-action: manipulation;
   width: fit-content;
   word-break: break-word;
