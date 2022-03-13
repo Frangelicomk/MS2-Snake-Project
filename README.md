@@ -35,7 +35,9 @@ Disney designed Hades hair so that is why the Theme of this game is the Underwor
 
     + Returing Visitors
 
-      Snake Game is fun, my aim is to improve this game in the future with different themes and challenges.
+      Snake Game is fun, my aim is to improve this game in the future with different themes and challenges as I want the users to come back in this
+      game and try more and more challenges each time. As the gaming industry advances it appears that users will not play that much an offline game
+      as an online game with constant changes,themes and challenges added on regular basis.
 + ### Design
 
   + Colour Scheme
