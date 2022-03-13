@@ -153,6 +153,7 @@ was taking so long. So i gave up on this this future for the moment.
 due to the was it was designed will take to much of a space. Again this is a future to be fixed later on.
 + 12.03.2022 : While the user can not go Down while going UP or LEFT while going RIGHT and vice verca there is a bug that when you follow a direction and quick press 2 buttons the snake will move back
 wards causing GAME OVER. again I have asked in SLACK and my TUTOR and this issue still havent been fixed.
++ 13.03.2022 : Vibration completely removed as it was causing IPHONE users not to be able to play the game on SAFARI.
 
 
 ## Deployment 
