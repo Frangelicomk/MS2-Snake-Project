@@ -37,6 +37,63 @@ const rightAudio = document.getElementById("rightAudio");
 const eatFoodAudio = document.getElementById("eatFoodAudio");
 const dieAudio = document.getElementById("dieAudio");
 
+/**The following 2 if statements are checking if the user opens the game in a mobile device and if so a joystick appears */
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 76) {
+  isMobile = true;
+}
+
+if (isMobile) {
+  document.getElementById("joyDiv").style.display = "block";
+  // this was copied from https://www.cssscript.com/onscreen-joystick/#:~:text=Description%3A-,JoyStick.,for%20your%20game%20web%20app with Author bobbotech
+  // creats the joystick
+  joy = new JoyStick("joyDiv", {
+    // The ID of canvas element
+    title: "joystick",
+    // width/height
+    width: undefined,
+    height: undefined,
+    // Internal color of Stick
+    internalFillColor: "rgba(255,255,255,1 )",
+    // Border width of Stick
+    internalLineWidth: 2,
+    // Border color of Stick
+    internalStrokeColor: "rgba(255,255,255,1 )",
+    // External reference circonference width
+    externalLineWidth: 2,
+    //External reference circonference color
+    externalStrokeColor: "rgba(255,255,255,1 )",
+    // Sets the behavior of the stick
+    autoReturnToCenter: true,
+  });
+}
+
+// set canvas size after screen loads
+window.addEventListener(
+  "load",
+  function () {
+    setCanvasSize();
+  },
+  false
+);
+
+// set canvas size on screen resize
+window.addEventListener(
+  "resize",
+  function () {
+    setCanvasSize();
+  },
+  false
+);
+
+// set canvas size on phone rotation
+window.addEventListener(
+  "orientationchange",
+  function () {
+    setCanvasSize();
+  },
+  false
+);
+
 /**
  * Setting up the canvas
  */
@@ -178,6 +235,9 @@ function drawSnake() {
     );
   }
 }
+
+// Event listener when the user presses a key.
+document.addEventListener("keydown", keyEventPress);
 
 // Directions
 //     0
@@ -472,65 +532,6 @@ function underworldSnakeGame() {
   setTimeout(underworldSnakeGame, 1000 / gameSpeed);
 }
 
-/**The following 2 if statements are checking if the user opens the game in a mobile device and if so a joystick appears */
-if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 76) {
-  isMobile = true;
-}
-
-if (isMobile) {
-  document.getElementById("joyDiv").style.display = "block";
-  // this was copied from https://www.cssscript.com/onscreen-joystick/#:~:text=Description%3A-,JoyStick.,for%20your%20game%20web%20app with Author bobbotech
-  // creats the joystick
-  joy = new JoyStick("joyDiv", {
-    // The ID of canvas element
-    title: "joystick",
-    // width/height
-    width: undefined,
-    height: undefined,
-    // Internal color of Stick
-    internalFillColor: "rgba(255,255,255,1 )",
-    // Border width of Stick
-    internalLineWidth: 2,
-    // Border color of Stick
-    internalStrokeColor: "rgba(255,255,255,1 )",
-    // External reference circonference width
-    externalLineWidth: 2,
-    //External reference circonference color
-    externalStrokeColor: "rgba(255,255,255,1 )",
-    // Sets the behavior of the stick
-    autoReturnToCenter: true,
-  });
-}
-
-// set canvas size after screen loads
-window.addEventListener(
-  "load",
-  function () {
-    setCanvasSize();
-  },
-  false
-);
-
-// set canvas size on screen resize
-window.addEventListener(
-  "resize",
-  function () {
-    setCanvasSize();
-  },
-  false
-);
-
-// set canvas size on phone rotation
-window.addEventListener(
-  "orientationchange",
-  function () {
-    setCanvasSize();
-  },
-  false
-);
-
-// Event listener when the user presses a key.
-document.addEventListener("keydown", keyEventPress);
 
 // User presses the restart button
 document.getElementById("restart").onclick = function () {
