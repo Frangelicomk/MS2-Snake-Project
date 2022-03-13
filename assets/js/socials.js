@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 const socialLinks = document.getElementById('social-links').getElementsByTagName("a");
 let red = 0;
 let green = 0;
